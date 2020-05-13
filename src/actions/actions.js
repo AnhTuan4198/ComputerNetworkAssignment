@@ -31,11 +31,12 @@ const createUser =  ({name=""}={})=>({
 //@param object{ name:String , message:list , users:list}
 //return object{id:string, message:list , users:List, name :string }
 
-const createChatbox = ({name = "Comunity", message =[], users=[] }= {}) => ({
+const createChatbox = ({name = "Comunity", messages =[], users=[] }= {}) => ({
     id:uuidv4(),
-    message,
-    user,
-    name
+    messages,
+    users,
+    name,
+    typingUsers:[]
 })
 
 

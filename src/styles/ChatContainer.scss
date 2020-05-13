@@ -1,0 +1,13 @@
+.Chat-container{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    .welcome-window{
+        flex:4;
+        height: 100%;
+    }
+    .side-bar{
+        flex:1;
+        height: 100%;
+    }
+}

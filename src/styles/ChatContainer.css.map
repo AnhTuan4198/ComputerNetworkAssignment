@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,eAAe,CAAA;EACX,OAAO,EAAE,IAAI;EACb,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;CAShB;;AAZD,AAII,eAJW,CAIX,eAAe,CAAA;EACX,IAAI,EAAC,CAAC;EACN,MAAM,EAAE,IAAI;CACf;;AAPL,AAQI,eARW,CAQX,SAAS,CAAA;EACL,IAAI,EAAC,CAAC;EACN,MAAM,EAAE,IAAI;CACf",
+    "sources": [
+        "ChatContainer.scss"
+    ],
+    "names": [],
+    "file": "ChatContainer.css"
+}

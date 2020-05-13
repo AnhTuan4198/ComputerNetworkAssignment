@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { VERIFY_USER } from "../actions/event";
+import '../styles/Loginform.css'
 
 class LoginForm extends Component {
     constructor(props){
@@ -26,8 +27,8 @@ class LoginForm extends Component {
         if(logined){
             this.setError("Nickname already taken")
         }else{
+            this.setError("");
             this.props.setUser(user);
-            this.setError('')
         }
     }   
     setError=(error)=>{
@@ -36,9 +37,9 @@ class LoginForm extends Component {
     render() {
         const {nickname , error} = this.state
         return (
-          <div>
-            <form onSubmit={this.handleSubmit}>
-                <label htmlFor="nickname"><h2>got a nickname?</h2></label>
+          <div className="LoginArea">
+            <form onSubmit={this.handleSubmit} id="Login-form">
+                <label htmlFor="nickname"><h2>Got cool a nickname?</h2></label>
                 <input
                     id="nickname" 
                     name="nickname"
@@ -47,7 +48,7 @@ class LoginForm extends Component {
                     onChange={this.handlOnchange}
                 />
                 <div id="error">{error? error:null}</div>
-                <button type="submit">GO</button>
+                <button className="btn" type="submit">GO</button>
             </form>
           </div>
         );

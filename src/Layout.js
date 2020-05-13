@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import {USER_CONNECTED,LOG_OUT} from './actions/event'
 import LoginForm from './components/LoginForm';
 import ChatContainer from './chat/ChatContainer';
-
+import './styles/Layout.css'
 
 
 const socketURL = "http://192.168.56.1:8080";
@@ -36,13 +36,13 @@ class Layout extends Component {
     // logout user 
     logout = () => {
         const { socket } =  this.state;
-        socket.emit(LOG_OUT);
+        socket.emit(LOG_OUT,this.state.user.name);
         this.setState({user:null})
     }
     render() {
         const { socket ,user} =this.state
         return (
-          <div>
+          <div className="Layout-container">
             {
                 user?
                 <ChatContainer socket={socket} user={user} logout={this.logout}/>:
