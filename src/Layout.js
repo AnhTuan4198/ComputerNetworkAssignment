@@ -17,10 +17,10 @@ class Layout extends Component {
     }
 
     componentWillMount(){
-        this.innitSocket();
+        this.initSocket();
     }
     /// INIT SOCKET CONNECTION
-    innitSocket= ()=>{
+    initSocket= ()=>{
         const socket = io(socketURL);
         socket.on('connect',()=>{
             console.log('Connected')

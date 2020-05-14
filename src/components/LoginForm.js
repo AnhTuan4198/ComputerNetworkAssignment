@@ -16,14 +16,14 @@ class LoginForm extends Component {
         e.preventDefault();
         const {socket} = this.props;
         const {nickname}=this.state;
-        console.log(nickname)
+       // console.log(nickname)
         socket.emit(VERIFY_USER,nickname,this.setUser)
     }
     handlOnchange=(e)=>{
         this.setState({[e.target.name]:e.target.value})
     }
     setUser=({user,logined})=>{
-        console.log(user,logined)
+        //console.log(user,logined)
         if(logined){
             this.setError("Nickname already taken")
         }else{
