@@ -40,17 +40,17 @@ class LoginForm extends Component {
           <div className="LoginArea">
             <form onSubmit={this.handleSubmit} id="Login-form">
                 <h2>Welcome</h2>
-                <label htmlFor="nickname"><h2>Got cool a nickname?</h2></label>
+                <label htmlFor="nickname"><h2>Don't have nickname?</h2></label>
                 <input
                     id="nickname" 
                     name="nickname"
                     type="text"
-                    placeholder="My cool nickname "
+                    placeholder="Get cool nickname here "
                     autoComplete="off"
                     onChange={this.handlOnchange}
                 />
                 <div id="error">{error? error:null}</div>
-                <button className="btn" type="submit">GO</button>
+                <button disabled={this.state.nickname.length<1} className="btn" type="submit">GO!!</button>
             </form>
           </div>
         );

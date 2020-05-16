@@ -33,6 +33,7 @@
   background: #ebf5fc;
   -webkit-box-shadow: -6px -6px 20px rgba(255, 255, 255, 0.01), 6px 6px 20px rgba(0, 0, 0, 0.1);
           box-shadow: -6px -6px 20px rgba(255, 255, 255, 0.01), 6px 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
   outline: none;
 }
 
@@ -47,7 +48,7 @@
 
 .LoginArea #Login-form #nickname {
   border: none;
-  width: 350px;
+  width: 50%;
   height: 30px;
   margin: 10px;
   text-align: center;
@@ -64,7 +65,11 @@
 }
 
 .LoginArea #Login-form .btn {
-  width: 120px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #31a3b1;
+  font-weight: 400;
+  font-size: 20px;
+  width: 25%;
   height: 30px;
   background-color: #ebf5fc;
   border-radius: 40px;
