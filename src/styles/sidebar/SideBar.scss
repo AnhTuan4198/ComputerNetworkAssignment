@@ -76,12 +76,9 @@ $Sidebar_hover:#00f3ff;
                 border-radius: 20px;
                 padding-left:20px;
                 outline:none;
-                box-shadow: 2px 2px 10px rgba(0,0,0,0.5),
-                            -2px -2px 10px rgba(255,255,255,0.1);
-                &:focus{
-                    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5),
-                                inset -2px -2px 5px rgba(255,255,255,0.1);
-                }
+                box-shadow:inset 2px 2px 10px rgba(0,0,0,0.5),
+                           inset -2px -2px 10px rgba(255,255,255,0.1);
+                
             }
             .plus{  
                 border:none;
