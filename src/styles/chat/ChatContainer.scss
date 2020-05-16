@@ -2,12 +2,16 @@
     display: flex;
     width: 100vw;
     height: 100vh;
+    margin:0px;
+    padding: 0px;
     .welcome-window{
         flex:4;
-        height: 100%;
+        height: 100vh;
+        margin: 0px;
     }
     .side-bar{
         flex:1;
-        height: 100%;
+        height: 100vh;
+        margin:0px;
     }
 }

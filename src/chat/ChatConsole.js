@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/ChatConsole.css'
+import '../styles/chat/ChatConsole.css'
 import Messages from '../components/message/Messages';
 import MessageInput from '../components/message/MessagesInput';
 class ChatConsole extends Component {

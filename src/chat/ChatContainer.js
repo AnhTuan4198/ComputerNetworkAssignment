@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SideBar from './SideBar';
 import ChatConsole from './ChatConsole';
-import '../styles/ChatContainer.css'
+import '../styles/chat/ChatContainer.css'
 import {
   MESSAGE_SENT,
   TYPING,
@@ -9,6 +9,9 @@ import {
   MESSAGE_RECEIVED,
   PRIVATE_CHAT
 } from "../actions/event";
+
+
+
 class ChatContainer extends Component {
   constructor(props) {
     super(props);

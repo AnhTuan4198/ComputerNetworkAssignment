@@ -1,0 +1,69 @@
+$backgoundColor:#ebf5fc;
+$textColor:#31a3b1;
+.LoginArea{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background-color: $backgoundColor;
+    #Login-form{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        height: 50%;
+        width:50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        //border:1px solid red;
+        border-radius: 40px;
+        background: $backgoundColor;
+        box-shadow: -6px -6px 20px rgba(255,255,255, 0.01),
+                     6px 6px 20px rgba(0,0,0, 0.1)  ;
+        h2{
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 40px;
+            font-weight: 1000;
+            color: $textColor;
+            text-shadow: 2px 2px 5px rgb(240, 240, 240);
+            margin:10px;
+        }
+        #nickname{
+            border:none;
+            width: 350px;
+            height: 30px;
+            margin: 10px;
+            text-align: center;
+            border-radius: 40px;
+            background-color: $backgoundColor;
+            box-shadow: -10px -10px 20px rgba(255,255,255, 0.1),
+                        6px 6px 20px rgba(0,0,0, 0.1);
+
+            &:focus{
+                box-shadow: inset -6px -6px 10px rgba(255,255,255, 0.1),
+                            inset 6px 6px 10px rgba(0,0,0, 0.1);
+            }
+            //pointer-events: none;
+            outline: none;
+        }
+        .btn{   
+            width: 120px;
+            height: 30px;
+            background-color: $backgoundColor;
+            border-radius: 40px;
+            border:none;
+            box-shadow: -6px -6px 20px rgba(255,255,255, 1),
+                        6px 6px 20px rgba(0,0,0, 0.1);
+            margin:10px;
+            &:hover{
+                 box-shadow: inset -4px -4px 10px rgba(255,255,255, 0.5),
+                         inset 4px 4px 10px rgba(0,0,0, 0.1);
+            }
+        }
+        outline: none;
+    }
+}

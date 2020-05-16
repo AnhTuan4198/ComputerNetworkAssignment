@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import {USER_CONNECTED,LOG_OUT} from './actions/event'
 import LoginForm from './components/LoginForm';
 import ChatContainer from './chat/ChatContainer';
-import './styles/Layout.css'
+import './styles/app/Layout.css'
 
 
 const socketURL = "http://192.168.56.1:8080";

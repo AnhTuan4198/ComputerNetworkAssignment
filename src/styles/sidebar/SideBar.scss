@@ -1,0 +1,210 @@
+$Sidebar_background_color:rgb(53, 54, 58);
+$Sidebar_text_color: rgba(238,238,238,1);
+$Sidebar_hover:#00f3ff;
+.Sidebar-container{
+    //border: 1px solid purple;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: stretch;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: $Sidebar_background_color;
+    color:$Sidebar_text_color;
+    .Sidebar-heading{   
+        //border: 0.1px solid rgb(109, 109, 109);
+        flex:0.2;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $Sidebar_background_color;
+        margin-bottom:2px;
+        box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+        .App-name{
+            width: 300px;
+            margin-left: 10px;
+            color: $Sidebar_text_color;
+            font-size: 20px;
+        }
+        .heading-menu{
+            background-color: $Sidebar_background_color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            height: 40px;
+            width: 40px;
+            border-radius:10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5),
+                        -2px -2px 10px rgba(255,255,255,0.1);
+            
+            &:hover{
+                box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2),
+                        inset -2px -2px 5px rgba(255,255,255,0.1);
+                        color: $Sidebar_hover;
+                        text-shadow: 0 0 15px $Sidebar_hover;
+            }
+        }
+    }
+    .Sidebar-search{
+        //border: 1px solid purple;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex:0.2;
+        margin-bottom:2px;
+        box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+        background-color: $Sidebar_background_color;
+        .Search-form{
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            background-color: $Sidebar_background_color;
+            border-radius: 20px;
+            overflow: hidden;
+            .Search-input{
+                //border: 1px solid red;
+                height: 40px;
+                width:70%;
+                background-color: $Sidebar_background_color;
+                color: $Sidebar_text_color;
+                border:none;
+                border-radius: 20px;
+                padding-left:20px;
+                outline:none;
+                box-shadow: 2px 2px 10px rgba(0,0,0,0.5),
+                            -2px -2px 10px rgba(255,255,255,0.1);
+                &:focus{
+                    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5),
+                                inset -2px -2px 5px rgba(255,255,255,0.1);
+                }
+            }
+            .plus{  
+                border:none;
+                outline:none;
+                background-color: $Sidebar_background_color;
+                color:$Sidebar_text_color;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                //margin-right: 10px;
+                height: 40px;
+                width: 40px;
+                border-radius:10px;
+                box-shadow: 2px 2px 10px rgba(0,0,0,0.5),
+                        -2px -2px 10px rgba(255,255,255,0.1);
+                &:hover{
+                box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2),
+                        inset -2px -2px 5px rgba(255,255,255,0.1);
+                        color: $Sidebar_hover;
+                        text-shadow: 0 0 15px $Sidebar_hover;
+            }
+            }
+            /*&:hover .search-icon {
+                color: $Sidebar_hover;
+                text-shadow: 0 0 15px $Sidebar_hover;
+            }*/
+        }
+       
+    }
+    .Sidebar-chat-list{
+        //border: 1px solid green;
+        padding-top:10px;
+        padding-bottom:10px;
+        overflow-y: scroll;
+        flex:1.5;
+        display: flex;
+        flex-direction: column;
+        margin-bottom:2px;
+        box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+        background-color: $Sidebar_background_color;
+        .user{
+            //border:1px solid white;
+            width: 98%;
+            display: flex;
+            justify-content: space-around;
+            align-items:center;
+            height: 50px;
+            border-radius: 5px;
+            margin-left: 5px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            //margin:0px 20px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5),
+                        -2px -2px 10px rgba(255,255,255,0.1);
+            transition: 0.4s ease-out;
+            .user-ava{
+                width: 10%;
+                //border:1px solid red;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 40px;
+                height: 50px;
+                padding: 0px 5px;
+                box-shadow: 5px 0px 15px rgba(0,0,0,0.2)
+            }
+            .user-info{
+                width:80%;
+                .user-name{
+                   //@error border: 1px solid blue;
+                    font-size: 20px;
+                }
+                .lastMessage{
+                    //border: 1px solid blue;
+                    font-size: 14px;
+                    color: rgb(189, 189, 189);
+                }
+            }
+            &:hover{
+                transform: translateY(-5px);
+            }
+            
+        }
+        .active{
+            box-shadow: inset 2px 2px 10px rgba(0,0,0,0.5),
+                       inset -2px -2px 10px rgba(255,255,255,0.1);
+            color: $Sidebar_hover;
+            text-shadow: 0 0 15px $Sidebar_hover;                
+        }
+    }
+    .Sidebar-current-user{
+        flex:0.2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom:2px;
+        box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+        background-color: $Sidebar_background_color;
+        .current-user-name{
+            width: 300px;
+            margin-left: 10px;
+            color: $Sidebar_text_color;
+            font-size: 20px;
+        }
+        #logout{
+            background-color: $Sidebar_background_color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            height: 40px;
+            width: 40px;
+            border-radius:10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5),
+                        -2px -2px 10px rgba(255,255,255,0.1);
+            
+            &:hover{
+                box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2),
+                        inset -2px -2px 5px rgba(255,255,255,0.1);
+                        color: $Sidebar_hover;
+                        text-shadow: 0 0 15px $Sidebar_hover;
+            }
+        
+        }
+    }
+}
