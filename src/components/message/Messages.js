@@ -18,12 +18,13 @@ class Messages extends Component {
           return (
             <div
               key={mess.id}
-              className={`message ${mess.sender === user.name ? "right":""}`}
+              className={`message ${mess.sender === user.name ? "right" : ""}`}
             >
-                <div className="content">{mess.message}</div>
-                <div className="Time">{mess.time}</div>
+              <div className="content">{mess.message}</div>
+              <div className="Time">{mess.time}</div>
+              {mess.sender !== user.name && (
                 <div className="sender">{mess.sender}</div>
-                {console.log(mess.sender)}
+              )}
             </div>
           );
         });
