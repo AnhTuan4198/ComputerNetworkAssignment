@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
+import '../../styles/message/Messages.css'
+
 
 class Messages extends Component {
     constructor(props){
         super(props)
-        this.container=React.createRef();
+        this.messageList=React.createRef();
     }
     componentDidMount(){
         this.scrollDown();
     }
+    componentDidUpdate(){
+      this.scrollDown();
+    }
     scrollDown=()=>{
-      this.container.current.scrollTop=this.container.current.scrollHeight;
+      /*this.container.current.scrollDown=this.container.current.scrollHeight;
+      console.log(this.container.current.scrollDown);*/
+      const scrollHeight = this.messageList.current.scrollHeight;
+      console.log(this.messageList.current.scrollHeight)
+      const height = this.messageList.current.clientHeight;
+      const maxScrollTop = scrollHeight - height;
+      this.messageList.current.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
     }
     render() {
         
@@ -36,10 +47,10 @@ class Messages extends Component {
           );
         });
         return (
-          <div className="container" ref={this.container}>
-            <div className="thread">
-                {messList}
-                {typingList}
+          <div className="container">
+            <div className="thread" ref={this.messageList}>
+              {messList}
+              {typingList}
             </div>
           </div>
         );
