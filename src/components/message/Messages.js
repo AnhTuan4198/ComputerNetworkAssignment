@@ -14,13 +14,7 @@ class Messages extends Component {
       this.scrollDown();
     }
     scrollDown=()=>{
-      /*this.container.current.scrollDown=this.container.current.scrollHeight;
-      console.log(this.container.current.scrollDown);*/
-      const scrollHeight = this.messageList.current.scrollHeight;
-      console.log(this.messageList.current.scrollHeight)
-      const height = this.messageList.current.clientHeight;
-      const maxScrollTop = scrollHeight - height;
-      this.messageList.current.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+      this.container.current.scrollDown=this.container.current.scrollHeight;
     }
     render() {
         
@@ -31,18 +25,32 @@ class Messages extends Component {
               key={mess.id}
               className={`message ${mess.sender === user.name ? "right" : ""}`}
             >
-              <div className="content">{mess.message}</div>
-              <div className="Time">{mess.time}</div>
-              {mess.sender !== user.name && (
-                <div className="sender">{mess.sender}</div>
-              )}
+                <div className="content">{mess.message}</div>
+                <div className="info">
+                  <div className="Time">{mess.time}</div>
+                  <div className="sender">{mess.sender}</div>
+                </div>
+                {console.log(mess.sender)}
             </div>
           );
         });
         const typingList = typingUsers.map((typingUser) => {
           return (
             <div key={typingUser} className="typing-status">
-              {`${typingUser} is typing ...`}
+              {`${typingUser}`}
+              <span> </span>
+              <span>i</span>
+              <span>s</span>
+              <span> </span>
+              <span>t</span>
+              <span>y</span>
+              <span>p</span>
+              <span>i</span>
+              <span>n</span>
+              <span>g</span>
+              <span>.</span>
+              <span>.</span>
+              <span>.</span>
             </div>
           );
         });
