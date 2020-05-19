@@ -9,7 +9,7 @@ class Messages extends Component {
         this.scrollDown();
     }
     scrollDown=()=>{
-      this.container.current.scrollTop=this.container.current.scrollHeight;
+      this.container.current.scrollDown=this.container.current.scrollHeight;
     }
     render() {
         
@@ -21,8 +21,10 @@ class Messages extends Component {
               className={`message ${mess.sender === user.name ? "right":""}`}
             >
                 <div className="content">{mess.message}</div>
-                <div className="Time">{mess.time}</div>
-                <div className="sender">{mess.sender}</div>
+                <div className="info">
+                  <div className="Time">{mess.time}</div>
+                  <div className="sender">{mess.sender}</div>
+                </div>
                 {console.log(mess.sender)}
             </div>
           );
@@ -30,7 +32,20 @@ class Messages extends Component {
         const typingList = typingUsers.map((typingUser) => {
           return (
             <div key={typingUser} className="typing-status">
-              {`${typingUser} is typing ...`}
+              {`${typingUser}`}
+              <span> </span>
+              <span>i</span>
+              <span>s</span>
+              <span> </span>
+              <span>t</span>
+              <span>y</span>
+              <span>p</span>
+              <span>i</span>
+              <span>n</span>
+              <span>g</span>
+              <span>.</span>
+              <span>.</span>
+              <span>.</span>
             </div>
           );
         });

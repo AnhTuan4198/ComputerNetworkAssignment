@@ -189,6 +189,7 @@
           box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px rgba(255, 255, 255, 0.1);
   -webkit-transition: 0.4s ease-out;
   transition: 0.4s ease-out;
+  overflow: hidden;
 }
 
 .Sidebar-container .Sidebar-chat-list .user .user-ava {
@@ -220,6 +221,7 @@
 .Sidebar-container .Sidebar-chat-list .user .user-info .lastMessage {
   font-size: 14px;
   color: #bdbdbd;
+  text-overflow: ellipsis;
 }
 
 .Sidebar-container .Sidebar-chat-list .user:hover {
@@ -285,4 +287,3 @@
   color: #00f3ff;
   text-shadow: 0 0 15px #00f3ff;
 }
-/*# sourceMappingURL=SideBar.css.map */

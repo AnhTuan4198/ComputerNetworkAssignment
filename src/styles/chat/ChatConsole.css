@@ -1,5 +1,616 @@
+.Sidebar-container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: #35363a;
+  color: #eeeeee;
+}
+
+.Sidebar-container .Sidebar-heading {
+  -webkit-box-flex: 0.2;
+      -ms-flex: 0.2;
+          flex: 0.2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #35363a;
+  margin-bottom: 2px;
+  -webkit-box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+          box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+}
+
+.Sidebar-container .Sidebar-heading .App-name {
+  width: 300px;
+  margin-left: 10px;
+  color: #eeeeee;
+  font-size: 20px;
+}
+
+.Sidebar-container .Sidebar-heading .heading-menu {
+  background-color: #35363a;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px rgba(255, 255, 255, 0.1);
+          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.Sidebar-container .Sidebar-heading .heading-menu:hover {
+  -webkit-box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.1);
+          box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.1);
+  color: #00f3ff;
+  text-shadow: 0 0 15px #00f3ff;
+}
+
+.Sidebar-container .Sidebar-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 0.2;
+      -ms-flex: 0.2;
+          flex: 0.2;
+  margin-bottom: 2px;
+  -webkit-box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+          box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+  background-color: #35363a;
+}
+
+.Sidebar-container .Sidebar-search .Search-form {
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  background-color: #35363a;
+  border-radius: 20px;
+  overflow: hidden;
+  /*&:hover .search-icon {
+                color: $Sidebar_hover;
+                text-shadow: 0 0 15px $Sidebar_hover;
+            }*/
+}
+
+.Sidebar-container .Sidebar-search .Search-form .Search-input {
+  height: 40px;
+  width: 70%;
+  background-color: #35363a;
+  color: #eeeeee;
+  border: none;
+  border-radius: 20px;
+  padding-left: 20px;
+  outline: none;
+  -webkit-box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5), inset -2px -2px 10px rgba(255, 255, 255, 0.1);
+          box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5), inset -2px -2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.Sidebar-container .Sidebar-search .Search-form .plus {
+  border: none;
+  outline: none;
+  background-color: #35363a;
+  color: #eeeeee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px rgba(255, 255, 255, 0.1);
+          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.Sidebar-container .Sidebar-search .Search-form .plus:hover {
+  -webkit-box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.1);
+          box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.1);
+  color: #00f3ff;
+  text-shadow: 0 0 15px #00f3ff;
+}
+
+.Sidebar-container .Sidebar-chat-list {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow-y: scroll;
+  -webkit-box-flex: 1.5;
+      -ms-flex: 1.5;
+          flex: 1.5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 2px;
+  -webkit-box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+          box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+  background-color: #35363a;
+}
+
+.Sidebar-container .Sidebar-chat-list .user {
+  width: 98%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px rgba(255, 255, 255, 0.1);
+          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px rgba(255, 255, 255, 0.1);
+  -webkit-transition: 0.4s ease-out;
+  transition: 0.4s ease-out;
+  overflow: hidden;
+}
+
+.Sidebar-container .Sidebar-chat-list .user .user-ava {
+  width: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 40px;
+  height: 50px;
+  padding: 0px 5px;
+  -webkit-box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.Sidebar-container .Sidebar-chat-list .user .user-info {
+  width: 80%;
+}
+
+.Sidebar-container .Sidebar-chat-list .user .user-info .user-name {
+  font-size: 20px;
+}
+
+.Sidebar-container .Sidebar-chat-list .user .user-info .lastMessage {
+  font-size: 14px;
+  color: #bdbdbd;
+  text-overflow: ellipsis;
+}
+
+.Sidebar-container .Sidebar-chat-list .user:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
+.Sidebar-container .Sidebar-chat-list .active {
+  -webkit-box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5), inset -2px -2px 10px rgba(255, 255, 255, 0.1);
+          box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5), inset -2px -2px 10px rgba(255, 255, 255, 0.1);
+  color: #00f3ff;
+  text-shadow: 0 0 15px #00f3ff;
+}
+
+.Sidebar-container .Sidebar-current-user {
+  -webkit-box-flex: 0.2;
+      -ms-flex: 0.2;
+          flex: 0.2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2px;
+  -webkit-box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+          box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
+  background-color: #35363a;
+}
+
+.Sidebar-container .Sidebar-current-user .current-user-name {
+  width: 300px;
+  margin-left: 10px;
+  color: #eeeeee;
+  font-size: 20px;
+}
+
+.Sidebar-container .Sidebar-current-user #logout {
+  background-color: #35363a;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px rgba(255, 255, 255, 0.1);
+          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.Sidebar-container .Sidebar-current-user #logout:hover {
+  -webkit-box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.1);
+          box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.1);
+  color: #00f3ff;
+  text-shadow: 0 0 15px #00f3ff;
+}
+
 .Chat-Console-container {
-  border: 1px solid blue;
+  background-color: #35363a;
   height: 100%;
 }
-/*# sourceMappingURL=ChatConsole.css.map */
+
+.Chat-Console-container .console-heading {
+  height: 9vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 5px;
+  position: fixed;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #35363a;
+  color: #eeeeee;
+  font-size: 120%;
+  font-weight: bold;
+}
+
+.Chat-Console-container .container {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 80vh;
+  position: relative;
+  top: 9vh;
+  border-radius: 5px;
+  padding-bottom: 12px;
+}
+
+.Chat-Console-container .container .thread {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.Chat-Console-container .container .thread .message {
+  margin: 1vh;
+  padding: 5px;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "info mess";
+  -ms-grid-columns: 1fr 15fr;
+      grid-template-columns: 1fr 15fr;
+}
+
+.Chat-Console-container .container .thread .message .content {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: mess;
+  display: inline-block;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  background-color: #2b98ff;
+  color: #eeeeee;
+  padding: 5px 10px;
+  border-radius: 10px;
+      justify-self: left;
+  -ms-flex-item-align: center;
+      align-self: center;
+  font-size: 3vh;
+}
+
+.Chat-Console-container .container .thread .message .info {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: info;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.Chat-Console-container .container .thread .message .info .sender {
+  font-size: 2vh;
+}
+
+.Chat-Console-container .container .thread .message .info .Time {
+  font-size: 50%;
+  font-style: italic;
+}
+
+.Chat-Console-container .container .thread .right {
+      grid-template-areas: "mess info";
+  -ms-grid-columns: 15fr 1fr;
+      grid-template-columns: 15fr 1fr;
+}
+
+.Chat-Console-container .container .thread .right .content {
+  -ms-grid-column-align: right;
+      justify-self: right;
+}
+
+.Chat-Console-container .container .thread .right .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: right;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+}
+
+.Chat-Console-container .container .thread .typing-status {
+  font-size: 50%;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  color: silver;
+  font-style: italic;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(1) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(2) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(3) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(4) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(5) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(6) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(7) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 1.05s;
+          animation-delay: 1.05s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(8) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(9) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 1.35s;
+          animation-delay: 1.35s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(10) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(11) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 1.65s;
+          animation-delay: 1.65s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(12) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+
+.Chat-Console-container .container .thread .typing-status span:nth-child(13) {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  -webkit-animation: bounce 0.15s linear;
+          animation: bounce 0.15s linear;
+  -webkit-animation-delay: 1.95s;
+          animation-delay: 1.95s;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+}
+
+.Chat-Console-container .Message-input {
+  position: fixed;
+  bottom: 0%;
+  height: 8vh;
+  width: 100%;
+}
+
+.Chat-Console-container .Message-input form {
+  height: 100%;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #35363a;
+}
+
+.Chat-Console-container .Message-input form #message {
+  position: relative;
+  bottom: 7px;
+  height: 96%;
+  width: 96%;
+  border-radius: 50px;
+  border: 1px solid silver;
+  padding-left: 20px;
+  outline: none;
+}
+
+.Chat-Console-container .Message-input form button {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  font-size: 80%;
+  position: absolute;
+  left: 75%;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.Chat-Console-container .Message-input form button:enabled {
+  color: #2b98ff;
+}

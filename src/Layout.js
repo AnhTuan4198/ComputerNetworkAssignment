@@ -6,7 +6,7 @@ import ChatContainer from './chat/ChatContainer';
 import './styles/app/Layout.css'
 
 
-const socketURL = "http://192.168.56.1:8080";
+const socketURL = "http://localhost:8080";
 class Layout extends Component {
     constructor(props){
         super( props );

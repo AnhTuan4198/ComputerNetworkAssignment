@@ -134,6 +134,7 @@ $Sidebar_hover:#00f3ff;
             box-shadow: 2px 2px 10px rgba(0,0,0,0.5),
                         -2px -2px 10px rgba(255,255,255,0.1);
             transition: 0.4s ease-out;
+            overflow: hidden;
             .user-ava{
                 width: 10%;
                 //border:1px solid red;
@@ -155,6 +156,7 @@ $Sidebar_hover:#00f3ff;
                     //border: 1px solid blue;
                     font-size: 14px;
                     color: rgb(189, 189, 189);
+                    text-overflow: ellipsis;
                 }
             }
             &:hover{

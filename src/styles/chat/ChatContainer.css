@@ -21,6 +21,6 @@
       -ms-flex: 1;
           flex: 1;
   height: 100vh;
+  max-width: 20vw;
   margin: 0px;
 }
-/*# sourceMappingURL=ChatContainer.css.map */
