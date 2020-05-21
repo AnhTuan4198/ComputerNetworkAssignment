@@ -14,14 +14,10 @@ class Messages extends Component {
       this.scrollDown();
     }
     scrollDown=()=>{
-<<<<<<< HEAD
-      this.container.current.scrollDown=this.container.current.scrollHeight;
-=======
       const scrollHeight = this.messageList.current.scrollHeight;
       const height = this.messageList.current.clientHeight;
       const maxScrollTop = scrollHeight - height;
       this.messageList.current.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
->>>>>>> 2dd20972778452e348cc3141c4216c0b6e0c3f95
     }
     render() {
         
@@ -37,10 +33,6 @@ class Messages extends Component {
                   <div className="Time">{mess.time}</div>
                   <div className="sender">{mess.sender}</div>
                 </div>
-<<<<<<< HEAD
-                {console.log(mess.sender)}
-=======
->>>>>>> 2dd20972778452e348cc3141c4216c0b6e0c3f95
             </div>
           );
         });

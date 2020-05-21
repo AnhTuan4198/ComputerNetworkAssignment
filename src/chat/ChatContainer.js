@@ -102,6 +102,7 @@ class ChatContainer extends Component {
     socket.emit(TYPING, { chatId, isTyping });
   };
   render() {
+    const { user, logout } = this.props;
     const { user, logout, socket } = this.props;
     const { chats, activeChat } = this.state;
     return (
