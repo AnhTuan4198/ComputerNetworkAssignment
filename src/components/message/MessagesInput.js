@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { RiMailSendLine } from "react-icons/ri";
-import '../../styles/message/MessagesInput.css';
+import {RiMailSendLine } from 'react-icons/ri'
+
 class MessagesInput extends Component {
     constructor(props){
         super(props)
