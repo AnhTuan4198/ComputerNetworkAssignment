@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../styles/message/Messages.css'
-
+import '../../styles/chat/ChatConsole.css';
 
 class Messages extends Component {
     constructor(props){
@@ -33,7 +33,6 @@ class Messages extends Component {
                   <div className="Time">{mess.time}</div>
                   <div className="sender">{mess.sender}</div>
                 </div>
-                {console.log(mess.sender)}
             </div>
           );
         });

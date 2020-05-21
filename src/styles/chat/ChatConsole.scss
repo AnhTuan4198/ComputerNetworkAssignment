@@ -3,6 +3,7 @@
 .Chat-Console-container{
     background-color: $Sidebar_background_color;
     height: 100%;
+    width: 100%;
     .console-heading{
         height: 9vh;
         width: 100%;
@@ -16,89 +17,7 @@
         font-weight: bold;
     }
 
-    .container{
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 80vh;
-        position: relative;
-        top: 9vh;
-        border-radius: 5px;
-        padding-bottom: 12px;
-        .thread {
-            height: 100%;
-            overflow-y: scroll;
-            .message{
-                margin: 1vh;
-                padding: 5px;
-                display: grid;
-                grid-template-areas: "info mess";
-                grid-template-columns: 1fr 15fr;
-                .content{
-                    grid-area: mess;
-                    display: inline-block;
-                    max-width: fit-content;
-                    background-color: rgb(43, 152, 255);
-                    color: $Sidebar_text_color;
-                    padding: 5px 10px;
-                    border-radius: 10px;
-                    justify-self: left;
-                    align-self: center;
-                    font-size: 3vh; 
-                }
-                .info{
-                    grid-area: info;
-                    display: flex;
-                    flex-direction: column-reverse;
-                    .sender{
-                        font-size: 2vh;
-                    }
-                    .Time{
-                        font-size: 50%;
-                        font-style: italic;
-                    }
-                }
-            }
-            .right{
-                grid-template-areas: "mess info";
-                grid-template-columns: 15fr 1fr;
-                .content{
-                    justify-self: right;
-                }
-                .info{
-                    display:flex;
-                    text-align: right;
-                    justify-content: right;
-                }
-            }
-            .typing-status{
-                font-size: 50%;
-                position: relative;
-                top: 10px;
-                left: 10px;
-                color: silver;
-                font-style: italic;
-                @for $i from 1 through 13 {
-                    span:nth-child(#{$i}) {
-                    position: relative;
-                    display: inline-block;
-                    white-space: pre;
-                    animation: bounce 0.15s linear;
-                    animation-delay: 0.15s * $i;
-                    }
-                }
-                @keyframes bounce {
-                    0% {
-                        transform: translateY(0px);
-                    }
-                    100% {
-                        transform: translateY(-5px);
-                    }
-                }
-            }
-        }
-    }
+    
 
     .Message-input{
         position: fixed;
