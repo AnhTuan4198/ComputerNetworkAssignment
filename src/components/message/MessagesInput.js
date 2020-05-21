@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {RiMailSendLine } from 'react-icons/ri'
+import '../../styles/message/MessagesInput.css';
 
 class MessagesInput extends Component {
     constructor(props){
@@ -54,7 +55,7 @@ class MessagesInput extends Component {
         
         return (
           <div className="Message-input">
-            <form onSubmit={this.handleSubmit}>
+            <form className ='form' onSubmit={this.handleSubmit}>
               <input
                 id="message"
                 name="message"
@@ -67,7 +68,7 @@ class MessagesInput extends Component {
                 }}
                 onChange={this.handlChange}
               />
-              <button disabled={this.state.message.length < 1} type="submit">
+              <button className='btn' disabled={this.state.message.length < 1} type="submit">
                 <RiMailSendLine/>
               </button>
             </form>

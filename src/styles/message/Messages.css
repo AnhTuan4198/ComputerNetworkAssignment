@@ -1,5 +1,4 @@
 .Sidebar-container {
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,16 +11,14 @@
           justify-content: stretch;
   width: 100%;
   height: 100vh;
-  padding: 0;
-  margin: 0;
   background-color: #35363a;
   color: #eeeeee;
 }
 
 .Sidebar-container .Sidebar-heading {
-  -webkit-box-flex: 0.2;
-      -ms-flex: 0.2;
-          flex: 0.2;
+  border: 0.1px solid #6d6d6d;
+  max-height: 10%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32,7 +29,6 @@
       -ms-flex-align: center;
           align-items: center;
   background-color: #35363a;
-  margin-bottom: 2px;
   -webkit-box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
           box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
 }
@@ -70,7 +66,19 @@
   text-shadow: 0 0 15px #00f3ff;
 }
 
-.Sidebar-container .Sidebar-search {
+.Sidebar-container .Sidebar-option {
+  border: 0.1px solid #6d6d6d;
+  height: 5vh;
+  max-height: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+}
+
+.Sidebar-container .Sidebar-option .Show-Chat-List, .Sidebar-container .Sidebar-option .Show-Online-User {
+  width: 50%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -80,9 +88,22 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-flex: 0.2;
-      -ms-flex: 0.2;
-          flex: 0.2;
+  border: 0.1px solid #6d6d6d;
+}
+
+.Sidebar-container .Sidebar-search {
+  border: 0.1px solid #6d6d6d;
+  height: 100%;
+  max-height: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 2px;
   -webkit-box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
           box-shadow: 2px 2px 2px rgba(160, 160, 160, 0.26);
@@ -103,10 +124,6 @@
   background-color: #35363a;
   border-radius: 20px;
   overflow: hidden;
-  /*&:hover .search-icon {
-                color: $Sidebar_hover;
-                text-shadow: 0 0 15px $Sidebar_hover;
-            }*/
 }
 
 .Sidebar-container .Sidebar-search .Search-form .Search-input {
@@ -150,13 +167,18 @@
   text-shadow: 0 0 15px #00f3ff;
 }
 
-.Sidebar-container .Sidebar-chat-list {
+.Sidebar-container .Sidebar-list {
+  height: 100%;
+  max-height: 65vh;
+  border: 0.1px solid #6d6d6d;
+}
+
+.Sidebar-container .Sidebar-list .Sidebar-chat-list, .Sidebar-container .Sidebar-list .Sidebar-user-list {
+  height: 100%;
+  max-height: 65vh;
   padding-top: 10px;
   padding-bottom: 10px;
   overflow-y: scroll;
-  -webkit-box-flex: 1.5;
-      -ms-flex: 1.5;
-          flex: 1.5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -170,7 +192,7 @@
   background-color: #35363a;
 }
 
-.Sidebar-container .Sidebar-chat-list .user {
+.Sidebar-container .Sidebar-list .Sidebar-chat-list .user, .Sidebar-container .Sidebar-list .Sidebar-user-list .user {
   width: 98%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -190,9 +212,10 @@
           box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px rgba(255, 255, 255, 0.1);
   -webkit-transition: 0.4s ease-out;
   transition: 0.4s ease-out;
+  overflow: hidden;
 }
 
-.Sidebar-container .Sidebar-chat-list .user .user-ava {
+.Sidebar-container .Sidebar-list .Sidebar-chat-list .user .user-ava, .Sidebar-container .Sidebar-list .Sidebar-user-list .user .user-ava {
   width: 10%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -210,25 +233,25 @@
           box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
-.Sidebar-container .Sidebar-chat-list .user .user-info {
+.Sidebar-container .Sidebar-list .Sidebar-chat-list .user .user-info, .Sidebar-container .Sidebar-list .Sidebar-user-list .user .user-info {
   width: 80%;
 }
 
-.Sidebar-container .Sidebar-chat-list .user .user-info .user-name {
+.Sidebar-container .Sidebar-list .Sidebar-chat-list .user .user-info .user-name, .Sidebar-container .Sidebar-list .Sidebar-user-list .user .user-info .user-name {
   font-size: 20px;
 }
 
-.Sidebar-container .Sidebar-chat-list .user .user-info .lastMessage {
+.Sidebar-container .Sidebar-list .Sidebar-chat-list .user .user-info .lastMessage, .Sidebar-container .Sidebar-list .Sidebar-user-list .user .user-info .lastMessage {
   font-size: 14px;
   color: #bdbdbd;
 }
 
-.Sidebar-container .Sidebar-chat-list .user:hover {
+.Sidebar-container .Sidebar-list .Sidebar-chat-list .user:hover, .Sidebar-container .Sidebar-list .Sidebar-user-list .user:hover {
   -webkit-transform: translateY(-5px);
           transform: translateY(-5px);
 }
 
-.Sidebar-container .Sidebar-chat-list .active {
+.Sidebar-container .Sidebar-list .Sidebar-chat-list .active, .Sidebar-container .Sidebar-list .Sidebar-user-list .active {
   -webkit-box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5), inset -2px -2px 10px rgba(255, 255, 255, 0.1);
           box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5), inset -2px -2px 10px rgba(255, 255, 255, 0.1);
   color: #00f3ff;
@@ -236,9 +259,9 @@
 }
 
 .Sidebar-container .Sidebar-current-user {
-  -webkit-box-flex: 0.2;
-      -ms-flex: 0.2;
-          flex: 0.2;
+  border: 0.1px solid #6d6d6d;
+  height: 100%;
+  max-height: 10%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -299,25 +322,22 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 80vh;
+  height: 100%;
+  max-height: 80vh;
   width: 100%;
-  position: relative;
-  top: 9vh;
-  border-radius: 5px;
-  padding-bottom: 12px;
-  overflow-x: hidden;
-  overflow-x: hidden;
+  border: 0.1px solid #6d6d6d;
+  overflow-wrap: break-word;
 }
 
 .container .thread {
-  max-width: 100%;
+  width: 100%;
   height: 100%;
-  overflow-x: hidden;
   overflow-y: scroll;
 }
 
 .container .thread .message {
-  margin: 1vh;
+  max-width: 100%;
+  margin: 10px;
   padding: 5px;
   display: -ms-grid;
   display: grid;
@@ -327,13 +347,16 @@
 }
 
 .container .thread .message .content {
+  width: 50vw;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: mess;
-  display: inline-block;
+  resize: both;
+  overflow: auto;
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
+  word-wrap: inherit;
   background-color: #dfdfdf;
   color: #202020;
   padding: 5px 10px;
@@ -373,10 +396,14 @@
 }
 
 .container .thread .right .content {
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
   -ms-grid-column-align: right;
       justify-self: right;
   background-color: #2b98ff;
   color: #eeeeee;
+  display: inline-block;
 }
 
 .container .thread .right .info {
