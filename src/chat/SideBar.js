@@ -56,7 +56,7 @@ class SideBar extends Component {
             </div>
             <div className="Sidebar-option">
               <div
-                className="Show-chat-List"
+                className="Show-Chat-List"
                 onClick={() => {
                   this.setState({ showUserList: false });
                 }}
@@ -64,7 +64,7 @@ class SideBar extends Component {
                 Chat List
               </div>
               <div
-                className="Show-online-user"
+                className="Show-Online-User"
                 onClick={() => {
                   this.setState({ showUserList: true });
                 }}
