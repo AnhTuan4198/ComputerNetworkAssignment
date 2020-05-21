@@ -24,7 +24,8 @@ $textColor:#31a3b1;
         background: $backgoundColor;
         box-shadow: -6px -6px 20px rgba(255,255,255, 0.01),
                      6px 6px 20px rgba(0,0,0, 0.1)  ;
-        h2{
+        text-align: center;
+        h2{ 
             font-family: 'Times New Roman', Times, serif;
             font-size: 40px;
             font-weight: 1000;
@@ -34,7 +35,7 @@ $textColor:#31a3b1;
         }
         #nickname{
             border:none;
-            width: 350px;
+            width: 50%;
             height: 30px;
             margin: 10px;
             text-align: center;
@@ -51,7 +52,11 @@ $textColor:#31a3b1;
             outline: none;
         }
         .btn{   
-            width: 120px;
+            font-family: 'Times New Roman', Times, serif;
+            color: $textColor;
+            font-weight: 400;
+            font-size: 20px;
+            width: 25%;
             height: 30px;
             background-color: $backgoundColor;
             border-radius: 40px;
@@ -67,3 +72,4 @@ $textColor:#31a3b1;
         outline: none;
     }
 }
+

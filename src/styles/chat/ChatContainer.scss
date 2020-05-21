@@ -7,12 +7,18 @@
     .welcome-window{
         flex:4;
         height: 100vh;
+        width: 80vw;
+        overflow-x: hidden;
         margin: 0px;
     }
     .side-bar{
         flex:1;
         height: 100vh;
+<<<<<<< HEAD
         max-width: 20vw;
+=======
+        width: 20vw;
+>>>>>>> 2dd20972778452e348cc3141c4216c0b6e0c3f95
         margin:0px;
     }
 }

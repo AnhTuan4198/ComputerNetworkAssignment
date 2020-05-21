@@ -190,7 +190,6 @@
           box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px rgba(255, 255, 255, 0.1);
   -webkit-transition: 0.4s ease-out;
   transition: 0.4s ease-out;
-  overflow: hidden;
 }
 
 .Sidebar-container .Sidebar-chat-list .user .user-ava {
@@ -222,7 +221,6 @@
 .Sidebar-container .Sidebar-chat-list .user .user-info .lastMessage {
   font-size: 14px;
   color: #bdbdbd;
-  text-overflow: ellipsis;
 }
 
 .Sidebar-container .Sidebar-chat-list .user:hover {
@@ -289,29 +287,7 @@
   text-shadow: 0 0 15px #00f3ff;
 }
 
-.Chat-Console-container {
-  background-color: #35363a;
-  height: 100%;
-}
-
-.Chat-Console-container .console-heading {
-  height: 9vh;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 5px;
-  position: fixed;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #35363a;
-  color: #eeeeee;
-  font-size: 120%;
-  font-weight: bold;
-}
-
-.Chat-Console-container .container {
+.container {
   background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -324,18 +300,23 @@
       -ms-flex-pack: center;
           justify-content: center;
   height: 80vh;
+  width: 100%;
   position: relative;
   top: 9vh;
   border-radius: 5px;
   padding-bottom: 12px;
+  overflow-x: hidden;
+  overflow-x: hidden;
 }
 
-.Chat-Console-container .container .thread {
+.container .thread {
+  max-width: 100%;
   height: 100%;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 
-.Chat-Console-container .container .thread .message {
+.container .thread .message {
   margin: 1vh;
   padding: 5px;
   display: -ms-grid;
@@ -345,7 +326,7 @@
       grid-template-columns: 1fr 15fr;
 }
 
-.Chat-Console-container .container .thread .message .content {
+.container .thread .message .content {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: mess;
@@ -353,8 +334,8 @@
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
-  background-color: #2b98ff;
-  color: #eeeeee;
+  background-color: #dfdfdf;
+  color: #202020;
   padding: 5px 10px;
   border-radius: 10px;
       justify-self: left;
@@ -363,7 +344,7 @@
   font-size: 3vh;
 }
 
-.Chat-Console-container .container .thread .message .info {
+.container .thread .message .info {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: info;
@@ -376,27 +357,29 @@
           flex-direction: column-reverse;
 }
 
-.Chat-Console-container .container .thread .message .info .sender {
+.container .thread .message .info .sender {
   font-size: 2vh;
 }
 
-.Chat-Console-container .container .thread .message .info .Time {
+.container .thread .message .info .Time {
   font-size: 50%;
   font-style: italic;
 }
 
-.Chat-Console-container .container .thread .right {
+.container .thread .right {
       grid-template-areas: "mess info";
   -ms-grid-columns: 15fr 1fr;
       grid-template-columns: 15fr 1fr;
 }
 
-.Chat-Console-container .container .thread .right .content {
+.container .thread .right .content {
   -ms-grid-column-align: right;
       justify-self: right;
+  background-color: #2b98ff;
+  color: #eeeeee;
 }
 
-.Chat-Console-container .container .thread .right .info {
+.container .thread .right .info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -406,16 +389,15 @@
           justify-content: right;
 }
 
-.Chat-Console-container .container .thread .typing-status {
-  font-size: 50%;
+.container .thread .typing-status {
+  font-size: 24px;
   position: relative;
   top: 10px;
-  left: 10px;
   color: silver;
   font-style: italic;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(1) {
+.container .thread .typing-status span:nth-child(1) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -425,7 +407,7 @@
           animation-delay: 0.15s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(2) {
+.container .thread .typing-status span:nth-child(2) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -435,7 +417,7 @@
           animation-delay: 0.3s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(3) {
+.container .thread .typing-status span:nth-child(3) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -445,7 +427,7 @@
           animation-delay: 0.45s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(4) {
+.container .thread .typing-status span:nth-child(4) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -455,7 +437,7 @@
           animation-delay: 0.6s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(5) {
+.container .thread .typing-status span:nth-child(5) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -465,7 +447,7 @@
           animation-delay: 0.75s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(6) {
+.container .thread .typing-status span:nth-child(6) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -475,7 +457,7 @@
           animation-delay: 0.9s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(7) {
+.container .thread .typing-status span:nth-child(7) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -485,7 +467,7 @@
           animation-delay: 1.05s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(8) {
+.container .thread .typing-status span:nth-child(8) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -495,7 +477,7 @@
           animation-delay: 1.2s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(9) {
+.container .thread .typing-status span:nth-child(9) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -505,7 +487,7 @@
           animation-delay: 1.35s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(10) {
+.container .thread .typing-status span:nth-child(10) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -515,7 +497,7 @@
           animation-delay: 1.5s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(11) {
+.container .thread .typing-status span:nth-child(11) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -525,7 +507,7 @@
           animation-delay: 1.65s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(12) {
+.container .thread .typing-status span:nth-child(12) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -535,7 +517,7 @@
           animation-delay: 1.8s;
 }
 
-.Chat-Console-container .container .thread .typing-status span:nth-child(13) {
+.container .thread .typing-status span:nth-child(13) {
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -566,52 +548,4 @@
             transform: translateY(-5px);
   }
 }
-
-.Chat-Console-container .Message-input {
-  position: fixed;
-  bottom: 0%;
-  height: 8vh;
-  width: 100%;
-}
-
-.Chat-Console-container .Message-input form {
-  height: 100%;
-  width: 80%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: #35363a;
-}
-
-.Chat-Console-container .Message-input form #message {
-  position: relative;
-  bottom: 7px;
-  height: 96%;
-  width: 96%;
-  border-radius: 50px;
-  border: 1px solid silver;
-  padding-left: 20px;
-  outline: none;
-}
-
-.Chat-Console-container .Message-input form button {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: none;
-  font-size: 80%;
-  position: absolute;
-  left: 75%;
-  background-color: rgba(255, 255, 255, 0);
-}
-
-.Chat-Console-container .Message-input form button:enabled {
-  color: #2b98ff;
-}
+/*# sourceMappingURL=Messages.css.map */

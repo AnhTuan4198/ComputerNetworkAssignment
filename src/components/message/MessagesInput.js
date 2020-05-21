@@ -59,6 +59,7 @@ class MessagesInput extends Component {
                 id="message"
                 name="message"
                 type="text"
+                autoComplete='off'
                 value={this.state.message}
                 placeholder="Type some thing interresting here"
                 onKeyUp={(e) => {

@@ -102,7 +102,7 @@ class ChatContainer extends Component {
     socket.emit(TYPING, { chatId, isTyping });
   };
   render() {
-    const { user, logout } = this.props;
+    const { user, logout, socket } = this.props;
     const { chats, activeChat } = this.state;
     return (
       <div className="Chat-container">
@@ -114,6 +114,8 @@ class ChatContainer extends Component {
             activeChat={activeChat}
             setActivechat={this.setActivechat}
             openPrivateChat={this.sendPrivateChat}
+            socket={socket}
+
           />
         </div>
         <div className="welcome-window">
