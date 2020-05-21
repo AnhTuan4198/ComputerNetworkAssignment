@@ -287,26 +287,59 @@
   text-shadow: 0 0 15px #00f3ff;
 }
 
-.Chat-Console-container {
-  background-color: #35363a;
-  height: 100%;
+.Message-input {
+  position: fixed;
+  bottom: 0%;
+  height: 8vh;
   width: 100%;
 }
 
-.Chat-Console-container .console-heading {
-  height: 9vh;
-  width: 100%;
+.Message-input form {
+  height: 100%;
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-left: 5px;
-  position: fixed;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #35363a;
+}
+
+.Message-input form #message {
+  position: relative;
+  bottom: 5px;
+  height: 96%;
+  width: 96%;
+  border-radius: 50px;
+  border: 1px solid silver;
+  padding-left: 20px;
+  outline: none;
+}
+
+.Message-input form button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #35363a;
-  color: #eeeeee;
-  font-size: 120%;
-  font-weight: bold;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  font-size: 35px;
+  position: absolute;
+  bottom: 3px;
+  left: 75%;
+  margin-right: 60px;
+  background-color: rgba(199, 199, 199, 0.3);
 }
-/*# sourceMappingURL=ChatConsole.css.map */
+
+.Message-input form button:enabled {
+  color: #2b98ff;
+}
+/*# sourceMappingURL=MessagesInput.css.map */

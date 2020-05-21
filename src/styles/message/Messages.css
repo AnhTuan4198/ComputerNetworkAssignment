@@ -334,8 +334,8 @@
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
-  background-color: #2b98ff;
-  color: #eeeeee;
+  background-color: #dfdfdf;
+  color: #202020;
   padding: 5px 10px;
   border-radius: 10px;
       justify-self: left;
@@ -375,6 +375,8 @@
 .container .thread .right .content {
   -ms-grid-column-align: right;
       justify-self: right;
+  background-color: #2b98ff;
+  color: #eeeeee;
 }
 
 .container .thread .right .info {

@@ -27,8 +27,8 @@
                     grid-area: mess;
                     display: inline-block;
                     max-width: fit-content;
-                    background-color: rgb(43, 152, 255);
-                    color: $Sidebar_text_color;
+                    background-color: rgb(223, 223, 223);
+                    color: rgb(32, 32, 32);
                     padding: 5px 10px;
                     border-radius: 10px;
                     justify-self: left;
@@ -53,6 +53,8 @@
                 grid-template-columns: 15fr 1fr;
                 .content{
                     justify-self: right;
+                    background-color: rgb(43, 152, 255) ;
+                    color: $Sidebar_text_color;
                 }
                 .info{
                     display:flex;

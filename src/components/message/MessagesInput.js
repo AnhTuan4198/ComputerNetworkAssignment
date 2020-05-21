@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { RiMailSendLine } from "react-icons/ri";
+import '../../styles/message/MessagesInput.css';
 class MessagesInput extends Component {
     constructor(props){
         super(props)
@@ -58,6 +59,7 @@ class MessagesInput extends Component {
                 id="message"
                 name="message"
                 type="text"
+                autoComplete='off'
                 value={this.state.message}
                 placeholder="Type some thing interresting here"
                 onKeyUp={(e) => {
@@ -66,7 +68,7 @@ class MessagesInput extends Component {
                 onChange={this.handlChange}
               />
               <button disabled={this.state.message.length < 1} type="submit">
-                Send
+                <RiMailSendLine/>
               </button>
             </form>
           </div>
