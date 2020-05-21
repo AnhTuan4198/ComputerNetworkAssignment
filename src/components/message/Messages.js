@@ -14,10 +14,7 @@ class Messages extends Component {
       this.scrollDown();
     }
     scrollDown=()=>{
-      /*this.container.current.scrollDown=this.container.current.scrollHeight;
-      console.log(this.container.current.scrollDown);*/
       const scrollHeight = this.messageList.current.scrollHeight;
-      console.log(this.messageList.current.scrollHeight)
       const height = this.messageList.current.clientHeight;
       const maxScrollTop = scrollHeight - height;
       this.messageList.current.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;

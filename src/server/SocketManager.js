@@ -72,7 +72,7 @@ module.exports = function(socket){
                 socket.to(receiverSocket).emit(PRIVATE_CHAT,newChat);
                 socket.emit(PRIVATE_CHAT,newChat); 
             }else{
-                socket.to(receiverSocket).emit(PRIVATE_CHAT,newChat)
+                socket.to(receiverSocket).emit(PRIVATE_CHAT, activeChat);
             }
         }
     })
