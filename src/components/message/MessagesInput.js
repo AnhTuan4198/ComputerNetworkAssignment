@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {RiMailSendLine } from 'react-icons/ri'
+import { RiMailSendLine, RiFileUploadLine } from "react-icons/ri";
 import '../../styles/message/MessagesInput.css';
 
 class MessagesInput extends Component {
@@ -10,7 +10,8 @@ class MessagesInput extends Component {
             isTyping:false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handlChange = this.handlChange.bind(this); 
+        this.handlChange = this.handlChange.bind(this);
+        this.handleSendFileForm=this.handleSendFileForm.bind(this); 
     }
     handleSubmit(e){
         e.preventDefault();
@@ -20,6 +21,7 @@ class MessagesInput extends Component {
 
     sendMessage(){
         const {message}=this.state;
+        console.log(message);
         this.props.sendMessage(message);
     }
     sendTyping(){
@@ -51,16 +53,20 @@ class MessagesInput extends Component {
     handlChange=(e)=>{
          this.setState({[e.target.name]:e.target.value})
     }
+    handleSendFileForm(){
+        console.log('showform');
+        this.props.showSendFileForm();
+    }
     render() {
         
         return (
           <div className="Message-input">
-            <form className ='form' onSubmit={this.handleSubmit}>
+            <form className="form" onSubmit={this.handleSubmit}>
               <input
                 id="message"
                 name="message"
                 type="text"
-                autoComplete='off'
+                autoComplete="off"
                 value={this.state.message}
                 placeholder="Type some thing interresting here"
                 onKeyUp={(e) => {
@@ -68,10 +74,17 @@ class MessagesInput extends Component {
                 }}
                 onChange={this.handlChange}
               />
-              <button className='btn' disabled={this.state.message.length < 1} type="submit">
-                <RiMailSendLine/>
+              <button
+                className="btn"
+                disabled={this.state.message.length < 1}
+                type="submit"
+              >
+                <RiMailSendLine />
               </button>
             </form>
+            <button className="file-btn" onClick={this.handleSendFileForm}>
+              <RiFileUploadLine/>
+            </button>
           </div>
         );
     }

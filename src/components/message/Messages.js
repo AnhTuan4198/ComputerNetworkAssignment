@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../styles/message/Messages.css'
 import '../../styles/chat/ChatConsole.css';
+import { TiHeartFullOutline } from 'react-icons/ti';
 
 class Messages extends Component {
     constructor(props){
@@ -23,7 +24,24 @@ class Messages extends Component {
         
         const {user,messages,typingUsers} = this.props
         const messList = messages.map((mess) => {
-          return (
+          if(mess.link){
+            return (
+              <div
+                key={mess.id}
+                className={`message ${
+                  mess.sender === user.name ? "right" : ""
+                }`}
+              >
+                <div className="content"><a href={mess.fileURL} download="New File"
+                target="_blank">{mess.fileName}</a></div>
+                <div className="info">
+                  <div className="Time">{mess.time}</div>
+                  <div className="sender">{mess.sender}</div>
+                </div>
+              </div>
+            );
+          }
+          return (            
             <div
               key={mess.id}
               className={`message ${mess.sender === user.name ? "right" : ""}`}

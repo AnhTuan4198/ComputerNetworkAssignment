@@ -1,0 +1,75 @@
+@import'../loginform/Loginform.scss';
+@import'../sidebar/SideBar.scss';
+.file-form{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+    //border:1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    color: $textColor;
+        background: $backgoundColor;
+        box-shadow: -6px -6px 20px rgba(255,255,255, 0.01),
+                     6px 6px 20px rgba(0,0,0, 0.1)  ;
+        text-align: center;
+    form{
+        display: flex;
+        height: 90%;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        color: $textColor;
+        .btn{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 60px;
+                border-radius: 10px;
+                //border: 1px solid red;
+                font-size: 35px;
+                height: 50px;
+                width: 140px;
+               border:none;
+               color: $textColor;
+                           background-color: $backgoundColor;
+            border-radius: 40px;
+                box-shadow: -6px -6px 20px rgba(255,255,255, 1),
+                        6px 6px 20px rgba(0,0,0, 0.1);
+                 margin:10px;
+                &:hover{
+                 box-shadow: inset -4px -4px 10px rgba(255,255,255, 0.5),
+                         inset 4px 4px 10px rgba(0,0,0, 0.1);
+            }
+            
+        }
+        input{
+            margin-top: 50px;
+            color: $textColor;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            //border:1px solid blue;
+            //height: 100px;
+            
+        }
+        .cancle-btn{
+            position: absolute;
+            left:85%;
+            bottom: 80%;
+            transform: translate(-85%,-80%);
+            background-color: red;
+            color: white;
+            border:none;
+            outline: none;
+            
+        }
+    }
+    
+}

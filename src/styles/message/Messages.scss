@@ -1,6 +1,8 @@
 @import '../sidebar/SideBar.scss';
+@import'../loginform/Loginform.scss';
+
 .container{
-        background-color: white;
+        background-color:$backgoundColor;
         display: flex;
         flex-direction: column;
         justify-content: center;

@@ -326,9 +326,10 @@
 }
 
 .Message-input .form {
+  overflow: hidden;
   position: relative;
   height: 80%;
-  width: 100%;
+  width: 80%;
   overflow-x: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -372,12 +373,36 @@
   border-radius: 50%;
   border: none;
   font-size: 35px;
-  margin-right: 60px;
   color: #eeeeee;
   background-color: transparent;
 }
 
 .Message-input .form .btn:enabled {
+  color: #2b98ff;
+}
+
+.Message-input .file-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  font-size: 35px;
+  margin-right: 60px;
+  color: #eeeeee;
+  background-color: transparent;
+}
+
+.Message-input .file-btn:hover {
   color: #2b98ff;
 }
 /*# sourceMappingURL=MessagesInput.css.map */

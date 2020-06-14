@@ -124,10 +124,6 @@
   background-color: #35363a;
   border-radius: 20px;
   overflow: hidden;
-  /*&:hover .search-icon {
-                color: $Sidebar_hover;
-                text-shadow: 0 0 15px $Sidebar_hover;
-            }*/
 }
 
 .Sidebar-container .Sidebar-search .Search-form .Search-input {

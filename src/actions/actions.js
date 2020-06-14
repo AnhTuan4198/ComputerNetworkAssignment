@@ -17,7 +17,16 @@ const createMessage = function ({message = "",sender = ""} = {}) {
     };
 } 
 
-
+const createLink = function ({fileName="new file",buffer=[],sender='',type}={}){
+    return {
+        id:uuidv4(),
+        fileName,
+        buffer,
+        sender,
+        type,
+        time: getTime(new Date(Date.now())),
+    };
+}
 // create user function 
 // @param object {name:string }
 //return object {id:string,name:string}
@@ -45,5 +54,6 @@ const createChatbox = ({name = "Community", messages =[], users=[] }= {}) => ({
 module.exports ={
     createUser,
     createChatbox,
-    createMessage
+    createMessage,
+    createLink
 }

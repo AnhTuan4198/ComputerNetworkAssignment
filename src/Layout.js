@@ -3,7 +3,8 @@ import io from 'socket.io-client';
 import {USER_CONNECTED,LOG_OUT} from './actions/event'
 import LoginForm from './components/LoginForm';
 import ChatContainer from './chat/ChatContainer';
-import './styles/app/Layout.css'
+import './styles/app/Layout.css';
+import p2p from 'socket.io-p2p';
 
 const socketURL = "http://localhost:8080";
 class Layout extends Component {
@@ -11,6 +12,7 @@ class Layout extends Component {
         super( props );
         this.state  = {
             socket:null,
+            p2psocket:null,
             user:null
         }
     }
@@ -21,10 +23,16 @@ class Layout extends Component {
     /// INIT SOCKET CONNECTION
     initSocket= ()=>{
         const socket = io(socketURL);
+        var opts = { peerOpts: { trickle: false }, autoUpgrade: false,usePeerConnection:true };
+        const p2psocket = new p2p(socket,opts);
+        // console.log(p2psocket);
+        //p2psocket.on('ready',()=>{
+        //console.log(p2psocket.peerId);
+        //})
         socket.on('connect',()=>{
             console.log('Connected')
         })
-        this.setState({socket});
+        this.setState({socket,p2psocket});
     }
     // SETUSER FUNCITON
     setUser= (user)=>{
@@ -39,14 +47,20 @@ class Layout extends Component {
         this.setState({user:null})
     }
     render() {
-        const { socket ,user} =this.state
+        const { socket ,user,p2psocket} =this.state;
+       // console.log(this.state);
         return (
           <div className="Layout-container">
-            {
-                user?
-                <ChatContainer socket={socket} user={user} logout={this.logout}/>:
-                <LoginForm socket={socket} setUser={this.setUser} />
-            }
+            {user ? (
+              <ChatContainer
+                p2psocket={p2psocket}
+                socket={socket}
+                user={user}
+                logout={this.logout}
+              />
+            ) : (
+              <LoginForm socket={socket} setUser={this.setUser} />
+            )}
           </div>
         );
     }

@@ -1,4 +1,5 @@
-const io  = require('./index.js').io;
+/*const io  = require('./index.js').io;
+
 const {
   USER_CONNECTED,
   VERIFY_USER,
@@ -17,6 +18,21 @@ let communityChat = createChatbox();
 
 module.exports = function(socket){
     console.log(` ${socket.id } is connecting `);
+    const sendMessageToChat = (sender) => {
+      return (chatId, message) => {
+        socket.emit(
+          `${MESSAGE_RECEIVED}-${chatId}`,
+          createMessage({ message, sender })
+        );
+      };
+    };
+
+    const updateTypingToChat = (user) => {
+      return (chatId, isTyping) => {
+        socket.emit(`${TYPING}-${chatId}`, { user, isTyping });
+      };
+    };
+
     //verify user
     let sendMessageToChatFromUser;
     let typingStatusFromUser;
@@ -97,20 +113,4 @@ function logined(user, userList){
     return user in userList
 }
 
-// send message
-const sendMessageToChat=(sender)=>{
-    return (chatId,message)=>{
-        io.emit(
-          `${MESSAGE_RECEIVED}-${chatId}`,
-          createMessage({ message, sender })
-        );
-    }
-}
-
-const updateTypingToChat=(user)=>{
-    return (chatId,isTyping)=>{
-        io.emit(`${TYPING}-${chatId}`,{user,isTyping});
-    }
-}
-//console.log(sendMessageToChat("hello"));
-
+*/
