@@ -24,11 +24,11 @@ class FileInput extends Component {
         //setInterval(this.props.showSendFileForm,500);
         //clearInterval(setInterval(this.props.showSendFileForm, 500));
     }
-    handleChangeFile(){
+    async handleChangeFile(){
         let input = document.querySelector("input[type=file]");
         console.log(input.files[0]);
         const reader = new FileReader();
-        reader.onload = () => {
+        reader.onload = ()=> {
           this.setState({fileName:input.files[0].name, buffer: [reader.result],type:input.files[0].type});
           console.log(this.state);
         };

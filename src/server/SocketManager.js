@@ -1,4 +1,4 @@
-/*const io  = require('./index.js').io;
+const io  = require('./index.js').io;
 
 const {
   USER_CONNECTED,
@@ -113,4 +113,4 @@ function logined(user, userList){
     return user in userList
 }
 
-*/
+

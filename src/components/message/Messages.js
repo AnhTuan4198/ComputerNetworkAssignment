@@ -32,7 +32,7 @@ class Messages extends Component {
                   mess.sender === user.name ? "right" : ""
                 }`}
               >
-                <div className="content"><a href={mess.fileURL} download="New File"
+                <div className="content"><a href={mess.fileURL} download={mess.fileName}
                 target="_blank">{mess.fileName}</a></div>
                 <div className="info">
                   <div className="Time">{mess.time}</div>

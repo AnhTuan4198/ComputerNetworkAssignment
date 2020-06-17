@@ -1,10 +1,9 @@
-const app = require('http').createServer();
+const express = require('express');
+const app = express();
+const server = require('http').createServer(app); 
 const p2p = require("socket.io-p2p-server").Server;
-const io  = require('socket.io')(app);
-const Manager = require('./SocketManager');
+const io  = require('socket.io')(server);
 const PORT = process.env.PORT || 8080;
-
-
 
 const {
   USER_CONNECTED,
@@ -155,6 +154,9 @@ function removeUSer(userName, userList) {
 function logined(user, userList) {
   return user in userList;
 }
-app.listen(PORT, () => {
+
+app.use(express.static(__dirname+"/../../build"))
+
+server.listen(PORT, () => {
   console.log(`App is running on port ${PORT}`);
 });
