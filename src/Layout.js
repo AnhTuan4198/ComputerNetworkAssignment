@@ -6,7 +6,7 @@ import ChatContainer from './chat/ChatContainer';
 import './styles/app/Layout.css';
 import p2p from 'socket.io-p2p';
 
-const socketURL = "http://localhost:8080";
+const socketURL = "/";
 class Layout extends Component {
     constructor(props){
         super( props );
