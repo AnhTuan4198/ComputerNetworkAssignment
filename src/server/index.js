@@ -18,6 +18,7 @@ const {
   FILE_SENT,
   FILE_RECEIVED,
 } = require("../actions/event");
+
 const {
   createUser,
   createChatbox,
@@ -27,13 +28,13 @@ const {
 
 let connectedUser = {};
 let communityChat = createChatbox();
-io.use(p2p);
+
+
+io.use(p2p);// allow peer to use funtionality as server.
 
 //central center
 io.on('connection',function (socket) {
   console.log(` ${socket.id} is connecting `);
-  
-
   //verify user
   let sendMessageToChatFromUser;
   let typingStatusFromUser;
@@ -48,7 +49,6 @@ io.on('connection',function (socket) {
   });
   //User connected
   socket.on(USER_CONNECTED, (user) => {
-    //console.log(user);
     user.socketId = socket.id;
     connectedUser = addUser(connectedUser, user);
     socket.user = user;
@@ -56,15 +56,12 @@ io.on('connection',function (socket) {
     typingStatusFromUser = updateTypingToChat(user.name);
     sendFileToChatFromUser= sendFileTochat(user.name)
     io.emit(USER_CONNECTED, connectedUser);
-    //console.log(connectedUser)
   });
-  // disconnected
 
   socket.on("disconnect", () => {
     if ("user" in socket) {
       connectedUser = removeUSer(socket.user.name, connectedUser);
       io.emit(USER_DISCONNECTED, connectedUser);
-      //console.log(connectedUser);
     }
   });
   //USer logout
@@ -78,13 +75,10 @@ io.on('connection',function (socket) {
   });
 
   socket.on(MESSAGE_SENT, ({ chatId, message }) => {
-    //console.log(`received command sent data`);
-    //console.log({ chatId, message });
     sendMessageToChatFromUser(chatId,message);
   });
 
   socket.on(TYPING, ({ chatId, isTyping }) => {
-      //console.log({ chatId, isTyping });
     typingStatusFromUser(chatId, isTyping);
   });
 

@@ -72,7 +72,7 @@ class ChatContainer extends Component {
       let newChatList = chats.map((chat) => {
         if (chat.id === chatId) {
           chat.messages.push(message);
-          console.log(chat.messages);
+          //console.log(chat.messages);
         }
         return chat;
       });
@@ -90,7 +90,6 @@ class ChatContainer extends Component {
       let newChatList = chats.map(chat=>{
         if(chat.id==chatId){
           chat.messages.push({fileURL,id:file.id,sender:file.sender,link:true,fileName:file.fileName});
-          //console.log(chat.messages)
         }
         return chat
       });
@@ -126,7 +125,6 @@ class ChatContainer extends Component {
 
   sendFile = (chatId,data)=>{
     const {socket} = this.props;
-    //console.log(`${data.data}+++${data.type}`)
     socket.emit(FILE_SENT,{chatId,data})
   };
 

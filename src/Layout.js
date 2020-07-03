@@ -25,10 +25,6 @@ class Layout extends Component {
         const socket = io(socketURL);
         var opts = { peerOpts: { trickle: false }, autoUpgrade: false,usePeerConnection:true };
         const p2psocket = new p2p(socket,opts);
-        // console.log(p2psocket);
-        //p2psocket.on('ready',()=>{
-        //console.log(p2psocket.peerId);
-        //})
         socket.on('connect',()=>{
             console.log('Connected')
         })
