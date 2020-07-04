@@ -60,9 +60,9 @@ class ChatContainer extends Component {
     const typingEvent = `${TYPING}-${chat.id}`;
     const fileEvent =`${FILE_RECEIVED}-${chat.id}`;
 
-    socket.on(messageEvent, this.addMessagetoChat(chat.id));
-    socket.on(typingEvent, this.updateTyping(chat.id));
-    socket.on(fileEvent,this.addLinkToChat(chat.id));
+    this.props.p2psocket.on(messageEvent, this.addMessagetoChat(chat.id));
+    this.props.p2psocket.on(typingEvent, this.updateTyping(chat.id));
+    this.props.p2psocket.on(fileEvent, this.addLinkToChat(chat.id));
   };
 
   addMessagetoChat = (chatId) => {
@@ -125,17 +125,17 @@ class ChatContainer extends Component {
 
   sendFile = (chatId,data)=>{
     const {socket} = this.props;
-    socket.emit(FILE_SENT,{chatId,data})
+    this.props.p2psocket.emit(FILE_SENT, { chatId, data });
   };
 
   sendMessage = (chatId, message) => {
     const { socket } = this.props;
-    socket.emit(MESSAGE_SENT, { chatId, message});
+    this.props.p2psocket.emit(MESSAGE_SENT, { chatId, message });
   };
 
   sendTyping = (chatId, isTyping) => {
     const { socket, p2psocket } = this.props;
-    socket.emit(TYPING, { chatId, isTyping });
+    this.props.p2psocket.emit(TYPING, { chatId, isTyping });
   };
 
   render() {

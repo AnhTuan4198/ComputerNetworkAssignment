@@ -6,7 +6,7 @@ import ChatContainer from './chat/ChatContainer';
 import './styles/app/Layout.css';
 import p2p from 'socket.io-p2p';
 
-const socketURL = "/";
+const socketURL = "http://localhost:8080";
 class Layout extends Component {
     constructor(props){
         super( props );
@@ -26,7 +26,8 @@ class Layout extends Component {
         var opts = { peerOpts: { trickle: false }, autoUpgrade: false,usePeerConnection:true };
         const p2psocket = new p2p(socket,opts);
         socket.on('connect',()=>{
-            console.log('Connected')
+            console.log(socket.id);
+            console.log(p2psocket.socket.id);
         })
         this.setState({socket,p2psocket});
     }
@@ -34,7 +35,8 @@ class Layout extends Component {
     setUser= (user)=>{
         const {socket} = this.state;
         socket.emit(USER_CONNECTED,user);
-        this.setState({user})
+        this.setState({user});
+
     }
     // logout user 
     logout = () => {

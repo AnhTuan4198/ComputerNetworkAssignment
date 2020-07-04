@@ -35,6 +35,7 @@ io.use(p2p);// allow peer to use funtionality as server.
 //central center
 io.on('connection',function (socket) {
   console.log(` ${socket.id} is connecting `);
+
   //verify user
   let sendMessageToChatFromUser;
   let typingStatusFromUser;
@@ -46,6 +47,7 @@ io.on('connection',function (socket) {
           user: createUser({ name: nickname, socketId: socket.id }),
           logined: false,
         });
+        console.log(socket.id)
   });
   //User connected
   socket.on(USER_CONNECTED, (user) => {
@@ -76,10 +78,12 @@ io.on('connection',function (socket) {
 
   socket.on(MESSAGE_SENT, ({ chatId, message }) => {
     sendMessageToChatFromUser(chatId,message);
+    console.log(socket.id+' Sent message');
   });
 
   socket.on(TYPING, ({ chatId, isTyping }) => {
     typingStatusFromUser(chatId, isTyping);
+    console.log(socket.id+" Is typing");
   });
 
   socket.on(PRIVATE_CHAT, ({ receiver, user, activeChat }) => {
@@ -92,6 +96,7 @@ io.on('connection',function (socket) {
         });
         socket.to(receiverSocket).emit(PRIVATE_CHAT, newChat);
         socket.emit(PRIVATE_CHAT, newChat);
+        console.log(socket.id+" requesst new chat");
       } else {
         socket.to(receiverSocket).emit(PRIVATE_CHAT, activeChat);
       }
@@ -100,16 +105,45 @@ io.on('connection',function (socket) {
 
   socket.on(FILE_SENT,({chatId,data})=>{
     sendFileToChatFromUser(chatId, data);
+    console.log(socket.id+" have sent file");
   })
+  const sendMessageToChat = (sender) => {
+    return (chatId, message) => {
+      socket.broadcast.emit(
+        `${MESSAGE_RECEIVED}-${chatId}`,
+        createMessage({ message, sender })
+      );
+    };
+  };
+
+  const sendFileTochat = (sender) => {
+    return (chatId, data) => {
+      const { fileName, buffer, type } = data;
+      //console.log("this is chat ID  " + chatId);
+      socket.broadcast.emit(
+        `${FILE_RECEIVED}-${chatId}`,
+        createLink({ fileName, buffer, sender, type })
+      );
+      //console.log(createLink({fileName, buffer, sender,type })) ;
+    };
+  };
+
+  const updateTypingToChat = (user) => {
+    return (chatId, isTyping) => {
+      socket.broadcast.emit(`${TYPING}-${chatId}`, { user, isTyping });
+    };
+  };
+
 
 });
 
 // Peer host
+/*
 const sendMessageToChat = (sender) => {
   return (chatId, message) => {
-    io.emit(
+    socket.broadcast.emit(
       `${MESSAGE_RECEIVED}-${chatId}`,
-      createMessage({ message, sender})
+      createMessage({ message, sender })
     );
   };
 };
@@ -118,18 +152,20 @@ const sendFileTochat = (sender)=>{
   return(chatId,data)=>{
     const {fileName, buffer,type}= data;
     //console.log("this is chat ID  " + chatId);
-    io.emit(`${FILE_RECEIVED}-${chatId}`,
-      createLink({fileName, buffer, sender, type }))
-    console.log(createLink({fileName, buffer, sender,type })) ;
+    socket.broadcast.emit(
+      `${FILE_RECEIVED}-${chatId}`,
+      createLink({ fileName, buffer, sender, type })
+    );
+    //console.log(createLink({fileName, buffer, sender,type })) ;
   };
 };
 
 const updateTypingToChat = (user) => {
   return (chatId, isTyping) => {
-    io.emit(`${TYPING}-${chatId}`, { user, isTyping });
+    socket.broadcast.emit(`${TYPING}-${chatId}`, { user, isTyping });
   };
 };
-
+*/
 //Add new user connecting
 function addUser(userList, user) {
   const newList = Object.assign({}, userList);
