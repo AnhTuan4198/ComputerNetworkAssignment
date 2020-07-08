@@ -46,6 +46,7 @@ class SideBar extends Component {
         } = this.props;
         
         const {ConnecttingUser} = this.state;
+        //console.log(ConnecttingUser);
         return (
           <div className="Sidebar-container">
             <div className="Sidebar-heading">
@@ -101,7 +102,8 @@ class SideBar extends Component {
                           <div
                             onClick={()=>{
                               this.setState({showUserList:false})
-                              this.props.openPrivateChat(cnuser[0]);
+                              //console.log(cnuser[1])
+                              this.props.openPrivateChat(cnuser[1]);
                             }
                           }
                           key={cnuser[1].id}
@@ -123,14 +125,14 @@ class SideBar extends Component {
                 >
                   {chats.map((chat) => {
                     if (chat.name) {
-                      //console.log(chat.users);
+                      
                       const lastMessage =
                         chat.messages[chat.messages.length - 1];
                       const conversation =
-                        chat.users.find((name) => {
-                          return name !== user.name;
+                        chat.users.find((member) => {
+                          return member.name !== user.name;
                         }) || "Community";
-                      //console.log(conversation);
+                        
                       const className =
                         activeChat && activeChat.id === chat.id ? "active" : "";
                       return (
@@ -140,10 +142,10 @@ class SideBar extends Component {
                           onClick={() => setActivechat(chat)}
                         >
                           <div className="user-ava">
-                            {conversation[0].toUpperCase()}
+                            {conversation!=="Community"?conversation.name[0].toUpperCase():"C"}
                           </div>
                           <div className="user-info">
-                            <div className="user-name">{conversation}</div>
+                            <div className="user-name">{conversation.name||"Community"}</div>
                             {lastMessage && (
                               <div className="lastMessage">
                                 {lastMessage.message}

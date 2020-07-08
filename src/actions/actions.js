@@ -31,10 +31,11 @@ const createLink = function ({fileName="new file",buffer=[],sender='',type}={}){
 // @param object {name:string }
 //return object {id:string,name:string}
 
-const createUser =  ({name="",socketId=null}={})=>({
+const createUser =  ({name="",socketId=null,peerId=null}={})=>({
     id:uuidv4(),
     name,
-    socketId
+    socketId,
+    peerId
 }) 
 
 // create conversation

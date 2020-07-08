@@ -11,8 +11,8 @@ import {
   FILE_SENT,
   FILE_RECEIVED
 } from "../actions/event";
-import p2p from "socket.io-p2p";
 
+import{createMessage,createLink} from "../actions/actions"
 
 class ChatContainer extends Component {
   constructor(props) {
@@ -20,26 +20,52 @@ class ChatContainer extends Component {
     this.state = {
       chats: [],
       activeChat: null,
+      targetPeer:null
     };
     this.sendPrivateChat=this.sendPrivateChat.bind(this);
+    this.setActivechat = this.setActivechat.bind(this);
+    
   }
   componentDidMount() {
-    const { socket} = this.props;
+    const { peer,socket} = this.props;
     this.initSocket(socket);
+    peer.on("connection", (sender) => {
+      console.log("hello from " );
+      console.log(this.state.activeChat)
+     if(this.state.activeChat){
+       console.log(this.state.activeChat)
+        sender.on("data", this.addMessagetoChat(this.state.activeChat.id));
+     }
+    });
   }
+
+  
+  receiveMessage=()=>{
+    const { peer} = this.props;
+    const { activeChat } = this.state;
+    //this.initSocket(socket); 
+    console.log(`i am in receiving message`)
+    if(activeChat){
+      console.log(activeChat.id);
+      peer.on("connection", (sender) => {
+        sender.on("data", this.addMessagetoChat(activeChat.id));
+      });
+    }
+     
+  }
+  
   initSocket(socket){
-    const {user,p2psocket} =this.props;
-    //console.log(p2psocket);
-    socket.emit(COMMUNITY_CHAT, this.resetChat);
     socket.on(PRIVATE_CHAT,this.addChat);
     socket.on('connect',()=>{
-       socket.emit(COMMUNITY_CHAT, this.resetChat);
     })
+    if (this.state.activeChat) {
+      this.receiveMessage();
+    }
   }
   sendPrivateChat(receiver){
     const {socket,user}=this.props;
     const {activeChat}=this.state;
-    socket.emit(PRIVATE_CHAT,{receiver,user:user.name,activeChat})
+    socket.emit(PRIVATE_CHAT,{receiver,user,activeChat})
   }
   //reset chat
   resetChat = (chat) => {
@@ -47,32 +73,24 @@ class ChatContainer extends Component {
   };
   //addChat
   addChat = (chat, reset=false) => {
-    const { socket, p2psocket } = this.props;
-    const { chats } = this.state;
-
+    const { socket,user,peer} = this.props;
+    const { chats,activeChat } = this.state;
+    
     const newChatList = reset ? [chat] : [...chats, chat];
     this.setState({
       chats: newChatList,
       activeChat: reset ? chat : this.state.activeChat,
     });
-
-    const messageEvent = `${MESSAGE_RECEIVED}-${chat.id}`;
     const typingEvent = `${TYPING}-${chat.id}`;
-    const fileEvent =`${FILE_RECEIVED}-${chat.id}`;
-
-    this.props.p2psocket.on(messageEvent, this.addMessagetoChat(chat.id));
-    this.props.p2psocket.on(typingEvent, this.updateTyping(chat.id));
-    this.props.p2psocket.on(fileEvent, this.addLinkToChat(chat.id));
+    socket.on(typingEvent, this.updateTyping(chat.id));
   };
 
   addMessagetoChat = (chatId) => {
     return (message) => {
-      //console.log(message);
       const { chats } = this.state;
       let newChatList = chats.map((chat) => {
         if (chat.id === chatId) {
           chat.messages.push(message);
-          //console.log(chat.messages);
         }
         return chat;
       });
@@ -104,13 +122,10 @@ class ChatContainer extends Component {
         const { chats } = this.state;
         let newChatList = chats.map((chat) => {
           if (chat.id === chatId) {
-            //console.log(chat.typingUsers.includes(user))
             if (isTyping && !chat.typingUsers.includes(user) ) {
               chat.typingUsers.push(user);
-              //console.log(`there are typing people ${chat.typingUsers}`);
             } else if (!isTyping && chat.typingUsers.includes(user) )
               chat.typingUsers = chat.typingUsers.filter((name) => name !== user);
-              //console.log(`there are typing people ${chat.typingUsers}`);
           }
           return chat;
         });
@@ -119,30 +134,46 @@ class ChatContainer extends Component {
     };
   };
 
-  setActivechat = (activeChat) => {
-    this.setState({ activeChat: activeChat });
+ async setActivechat  (activeChat)  {
+    const{user,peer}=this.props;
+    await this.setState({ activeChat: activeChat });
+    let targetUser = activeChat.users.find((member) => {
+      return member.name !== user.name;
+    });
+    if (targetUser) {
+      let targetPeer = await peer.connect(targetUser.peerId);
+      targetPeer.on("open", () => {
+        console.log(`${user.peerId} have connected to ${targetUser.peerId}`);
+      });
+      this.setState({targetPeer});
+    }
   };
 
   sendFile = (chatId,data)=>{
     const {socket} = this.props;
-    this.props.p2psocket.emit(FILE_SENT, { chatId, data });
+    socket.emit(FILE_SENT, { chatId, data });
+
   };
 
   sendMessage = (chatId, message) => {
-    const { socket } = this.props;
-    this.props.p2psocket.emit(MESSAGE_SENT, { chatId, message });
+    const { user,peer } = this.props;
+    const {targetPeer} =this.state;
+    let newMessage = createMessage({message ,sender: user.name});
+    console.log(newMessage);
+    this.addMessagetoChat(chatId)(newMessage);
+    targetPeer.send(newMessage);
+    console.log(this.state.chats)
   };
 
   sendTyping = (chatId, isTyping) => {
-    const { socket, p2psocket } = this.props;
-    this.props.p2psocket.emit(TYPING, { chatId, isTyping });
+    const { socket } = this.props;
+    socket.emit(TYPING, { chatId, isTyping });
   };
 
   render() {
     const { user, logout, socket } = this.props;
     const { chats, activeChat } = this.state;
-    //console.log(chats)
-    //console.log(activeChat)
+    
     return (
       <div className="Chat-container">
         <div className="side-bar">
@@ -161,6 +192,7 @@ class ChatContainer extends Component {
             <ChatConsole
               user={user}
               activeChat={activeChat}
+              receiveMessage={this.receiveMessage}
               sendTyping={this.sendTyping}
               sendMessage={this.sendMessage}
               sendFile={this.sendFile}

@@ -4,32 +4,45 @@ import {USER_CONNECTED,LOG_OUT} from './actions/event'
 import LoginForm from './components/LoginForm';
 import ChatContainer from './chat/ChatContainer';
 import './styles/app/Layout.css';
-import p2p from 'socket.io-p2p';
+import Peer from "peerjs";
 
-const socketURL = "http://localhost:8080";
+const socketURL = "http://191.16.20.6:8080";
 class Layout extends Component {
     constructor(props){
         super( props );
         this.state  = {
             socket:null,
-            p2psocket:null,
+            peerId:null,
+            peer:null,
             user:null
         }
+        this.initSocket=this.initSocket.bind(this);
     }
 
     componentWillMount(){
         this.initSocket();
+        
     }
     /// INIT SOCKET CONNECTION
-    initSocket= ()=>{
-        const socket = io(socketURL);
-        var opts = { peerOpts: { trickle: false }, autoUpgrade: false,usePeerConnection:true };
-        const p2psocket = new p2p(socket,opts);
-        socket.on('connect',()=>{
+     initSocket (){
+      
+          const socket = io(socketURL);
+          const peer = new Peer('',{
+            debug:true,
+            host:'191.16.20.6',
+            port:9000,
+            path:'/chat-app'
+          });
+          //let peerId;
+          peer.on('open',(id)=>{
+            console.log(`My peer id is ${id} `);
+            this.setState({peerId:id})
+          })
+          
+          socket.on('connect',()=>{
             console.log(socket.id);
-            console.log(p2psocket.socket.id);
-        })
-        this.setState({socket,p2psocket});
+          })
+          this.setState({socket,peer});   
     }
     // SETUSER FUNCITON
     setUser= (user)=>{
@@ -45,19 +58,20 @@ class Layout extends Component {
         this.setState({user:null})
     }
     render() {
-        const { socket ,user,p2psocket} =this.state;
-       // console.log(this.state);
+        const { socket ,user,peerId,peer} =this.state;
+        //console.log(this.state)
         return (
           <div className="Layout-container">
             {user ? (
               <ChatContainer
-                p2psocket={p2psocket}
+                peerId={peerId}
+                peer={peer}
                 socket={socket}
                 user={user}
                 logout={this.logout}
               />
             ) : (
-              <LoginForm socket={socket} setUser={this.setUser} />
+              <LoginForm peerId={peerId} socket={socket} setUser={this.setUser} />
             )}
           </div>
         );

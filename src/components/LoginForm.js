@@ -14,9 +14,9 @@ class LoginForm extends Component {
     }
     handleSubmit = (e)=>{
         e.preventDefault();
-        const {socket} = this.props;
+        const {socket,peerId} = this.props;
         const {nickname}=this.state;
-        socket.emit(VERIFY_USER,nickname,this.setUser)
+        socket.emit(VERIFY_USER,nickname,peerId,this.setUser)
     }
     handlOnchange=(e)=>{
         this.setState({[e.target.name]:e.target.value})
@@ -33,7 +33,9 @@ class LoginForm extends Component {
         this.setState({error:error})
     }
     render() {
-        const {nickname , error} = this.state
+        const {nickname , error} = this.state;
+        const {peerId}=this.props;
+        //console.log(peerId)
         return (
           <div className="LoginArea">
             <form onSubmit={this.handleSubmit} id="Login-form">
