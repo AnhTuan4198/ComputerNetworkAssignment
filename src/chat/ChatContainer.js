@@ -26,38 +26,36 @@ class ChatContainer extends Component {
     this.setActivechat = this.setActivechat.bind(this);
     
   }
+  
   componentDidMount() {
-    const { peer,socket} = this.props;
+    const { peer,socket } = this.props;
+    let { activeChat } = this.state;
     this.initSocket(socket);
-    peer.on("connection", (sender) => {
-      console.log("hello from " );
-      console.log(this.state.activeChat)
-     if(this.state.activeChat){
-       console.log(this.state.activeChat)
-        sender.on("data", this.addMessagetoChat(this.state.activeChat.id));
-     }
+    console.log(`i am in receiving message`);
+    peer.on("connection",  (sender)=> {
+      let connected ; 
+      const { chats } = this.state;
+      chats.forEach(chat=>{
+        for(let i=0 ; i < chat.users.length ; i++){
+          if (chat.users[i].peerId === sender.peer) {
+            connected = chat;
+          }
+        }
+      }) 
+        if(connected){
+          console.log(connected.id)
+          sender.on("data", this.addMessagetoChat(connected.id));
+        }
     });
+
   }
 
-  
-  receiveMessage=()=>{
-    const { peer} = this.props;
-    const { activeChat } = this.state;
-    //this.initSocket(socket); 
-    console.log(`i am in receiving message`)
-    if(activeChat){
-      console.log(activeChat.id);
-      peer.on("connection", (sender) => {
-        sender.on("data", this.addMessagetoChat(activeChat.id));
-      });
-    }
-     
-  }
   
   initSocket(socket){
     socket.on(PRIVATE_CHAT,this.addChat);
     socket.on('connect',()=>{
     })
+    //console.log(this.state.activeChat);
     if (this.state.activeChat) {
       this.receiveMessage();
     }
@@ -73,16 +71,16 @@ class ChatContainer extends Component {
   };
   //addChat
   addChat = (chat, reset=false) => {
-    const { socket,user,peer} = this.props;
-    const { chats,activeChat } = this.state;
-    
-    const newChatList = reset ? [chat] : [...chats, chat];
-    this.setState({
-      chats: newChatList,
-      activeChat: reset ? chat : this.state.activeChat,
-    });
-    const typingEvent = `${TYPING}-${chat.id}`;
-    socket.on(typingEvent, this.updateTyping(chat.id));
+     const { socket, user, peer } = this.props;
+     const { chats, activeChat } = this.state;
+
+     const newChatList = reset ? [chat] : [...chats, chat];
+     this.setState({
+       chats: newChatList,
+       activeChat: reset ? chat : this.state.activeChat,
+     });
+     const typingEvent = `${TYPING}-${chat.id}`;
+     socket.on(typingEvent, this.updateTyping(chat.id));
   };
 
   addMessagetoChat = (chatId) => {
@@ -135,8 +133,8 @@ class ChatContainer extends Component {
   };
 
  async setActivechat  (activeChat)  {
-    const{user,peer}=this.props;
-    await this.setState({ activeChat: activeChat });
+    const { user, peer } = this.props;
+     this.setState({ activeChat });
     let targetUser = activeChat.users.find((member) => {
       return member.name !== user.name;
     });
@@ -145,7 +143,7 @@ class ChatContainer extends Component {
       targetPeer.on("open", () => {
         console.log(`${user.peerId} have connected to ${targetUser.peerId}`);
       });
-      this.setState({targetPeer});
+      this.setState({ targetPeer });
     }
   };
 
@@ -159,10 +157,8 @@ class ChatContainer extends Component {
     const { user,peer } = this.props;
     const {targetPeer} =this.state;
     let newMessage = createMessage({message ,sender: user.name});
-    console.log(newMessage);
     this.addMessagetoChat(chatId)(newMessage);
     targetPeer.send(newMessage);
-    console.log(this.state.chats)
   };
 
   sendTyping = (chatId, isTyping) => {

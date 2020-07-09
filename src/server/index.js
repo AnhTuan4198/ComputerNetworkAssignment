@@ -8,5 +8,4 @@ app.use(CORS);
 const SocketManager = require("./SocketManager");
 io.on("connection", SocketManager);
 app.use(express.static(__dirname + "/../../build"));
-
-server.listen(PORT,"191.16.20.6");
+server.listen(PORT, "191.16.20.6");

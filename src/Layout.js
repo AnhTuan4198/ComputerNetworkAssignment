@@ -25,13 +25,12 @@ class Layout extends Component {
     }
     /// INIT SOCKET CONNECTION
      initSocket (){
-      
           const socket = io(socketURL);
-          const peer = new Peer('',{
-            debug:true,
-            host:'191.16.20.6',
-            port:9000,
-            path:'/chat-app'
+          const peer = new Peer("", {
+            debug: true,
+            host: "191.16.20.6",
+            port: 9000,
+            path: "/chat-app",
           });
           //let peerId;
           peer.on('open',(id)=>{

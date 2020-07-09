@@ -78,6 +78,7 @@ module.exports = function(socket){
   });
 
   socket.on(PRIVATE_CHAT, ({ receiver, user, activeChat }) => {
+    console.log("This is receiver: "+receiver)
     if (receiver.name in connectedUser) {
       console.log(receiver.name +" and "+ user.name);
       const receiverSocket = connectedUser[receiver.name].socketId;

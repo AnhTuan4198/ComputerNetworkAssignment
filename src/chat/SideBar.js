@@ -25,7 +25,16 @@ class SideBar extends Component {
     handleSubmit(e){
         e.preventDefault();
         //console.log(this.state.receiver);
-        this.props.openPrivateChat(this.state.receiver);
+        const {user} =this.props;
+        const {connectedUser} =this.state;
+        let receiver;
+        connectedUser.forEach((cnuser)=>{
+          if(cnuser[0]!==user.name){
+            receiver = cnuser[1];
+            console.log(receiver);
+          }
+        })
+        this.props.openPrivateChat(receiver);
         this.setState({receiver:""})
     }
     getConnectingList(){
@@ -45,7 +54,7 @@ class SideBar extends Component {
           setActivechat,
         } = this.props;
         
-        const {ConnecttingUser} = this.state;
+        const {ConnecttingUser,receiver} = this.state;
         //console.log(ConnecttingUser);
         return (
           <div className="Sidebar-container">
@@ -87,7 +96,7 @@ class SideBar extends Component {
                 <button
                   className="plus"
                   type="submit"
-                  disabled={this.state.receiver.length < 1}
+                  disabled={receiver?this.state.receiver.name.length < 1:null}
                 >
                   <IoIosPersonAdd />
                 </button>
@@ -124,8 +133,7 @@ class SideBar extends Component {
                   }}
                 >
                   {chats.map((chat) => {
-                    if (chat.name) {
-                      
+                    if (chat) {
                       const lastMessage =
                         chat.messages[chat.messages.length - 1];
                       const conversation =

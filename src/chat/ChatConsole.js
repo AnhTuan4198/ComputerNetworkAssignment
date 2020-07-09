@@ -23,7 +23,7 @@ class ChatConsole extends Component {
     
     return (
       <div className="Chat-Console-container">
-        <div className="console-heading">{activeChat.name}</div>
+        <div className="console-heading">{activeChat?activeChat.name:"Anonymous"}</div>
         <Messages
           user={user}
           messages={activeChat.messages}
