@@ -43,8 +43,17 @@ class ChatContainer extends Component {
         }
       }) 
         if(connected){
-          console.log(connected.id)
-          sender.on("data", this.addMessagetoChat(connected.id));
+          sender.on("data",(data)=>{
+            switch(data.dataType){
+              case"text":
+                this.addMessagetoChat(connected.id)(data);
+                break
+              case"file":
+                this.addLinkToChat(connected.id)(data);
+              default:
+                break
+            }
+          });
         }
     });
 
@@ -148,9 +157,16 @@ class ChatContainer extends Component {
   };
 
   sendFile = (chatId,data)=>{
-    const {socket} = this.props;
-    socket.emit(FILE_SENT, { chatId, data });
-
+    const {user} = this.props;
+    const {targetPeer} =this.state;
+    let newFileLink = createLink({
+      fileName:data.fileName,
+      buffer:data.buffer,
+      sender:user.name,
+      type:data.type
+    })
+    this.addLinkToChat(chatId)(newFileLink);
+    targetPeer.send(newFileLink);
   };
 
   sendMessage = (chatId, message) => {

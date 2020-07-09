@@ -8,22 +8,24 @@ const getTime=(date)=>{
     return `${date.getHours()}:${(('0'+date.getMinutes()).slice(-2))}`;
 }
 
-const createMessage = function ({message = "",sender = ""} = {}) {
+const createMessage = function ({message = "",sender = "",dataType="text"} = {}) {
     return {
       id: uuidv4(),
       message,
       sender,
+      dataType,
       time: getTime(new Date(Date.now())),
     };
 } 
 
-const createLink = function ({fileName="new file",buffer=[],sender='',type}={}){
+const createLink = function ({fileName="new file",buffer=[],sender='',type,dataType="file"}={}){
     return {
         id:uuidv4(),
         fileName,
         buffer,
         sender,
         type,
+        dataType,
         time: getTime(new Date(Date.now())),
     };
 }

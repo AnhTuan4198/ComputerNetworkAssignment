@@ -41,7 +41,6 @@ class ChatConsole extends Component {
         {this.state.showSendFileForm ? (
           <FileInput
             sendFile={(data) => {
-              //console.log(data);
               sendFile(activeChat.id, data);
             }}
             showSendFileForm={this.showSendFileForm}

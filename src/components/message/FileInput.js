@@ -21,8 +21,6 @@ class FileInput extends Component {
             type:''
         });
         this.props.showSendFileForm();
-        //setInterval(this.props.showSendFileForm,500);
-        //clearInterval(setInterval(this.props.showSendFileForm, 500));
     }
     async handleChangeFile(){
         let input = document.querySelector("input[type=file]");
