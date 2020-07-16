@@ -62,12 +62,6 @@ class ChatContainer extends Component {
   
   initSocket(socket){
     socket.on(PRIVATE_CHAT,this.addChat);
-    socket.on('connect',()=>{
-    })
-    //console.log(this.state.activeChat);
-    if (this.state.activeChat) {
-      this.receiveMessage();
-    }
   }
   sendPrivateChat(receiver){
     const {socket,user}=this.props;

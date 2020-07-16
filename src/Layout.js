@@ -16,15 +16,14 @@ class Layout extends Component {
             peer:null,
             user:null
         }
-        this.initSocket=this.initSocket.bind(this);
+        this.initConnection=this.initConnection.bind(this);
     }
 
     componentWillMount(){
-        this.initSocket();
-        
+        this.initConnection();
     }
     /// INIT SOCKET CONNECTION
-     initSocket (){
+     initConnection (){
           const socket = io(socketURL);
           const peer = new Peer("", {
             debug: true,

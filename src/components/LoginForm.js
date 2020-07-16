@@ -9,10 +9,10 @@ class LoginForm extends Component {
             nickname:'',
             error:null
         }
-        this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleVerifySubmit = this.handleVerifySubmit.bind(this);
         this.handlOnchange=this.handlOnchange.bind(this);
     }
-    handleSubmit = (e)=>{
+    handleVerifySubmit = (e)=>{
         e.preventDefault();
         const {socket,peerId} = this.props;
         const {nickname}=this.state;
@@ -38,19 +38,27 @@ class LoginForm extends Component {
         //console.log(peerId)
         return (
           <div className="LoginArea">
-            <form onSubmit={this.handleSubmit} id="Login-form">
-                <h2>Welcome</h2>
-                <label htmlFor="nickname"><h2>Don't have nickname?</h2></label>
-                <input
-                    id="nickname" 
-                    name="nickname"
-                    type="text"
-                    placeholder="Get cool nickname here "
-                    autoComplete="off"
-                    onChange={this.handlOnchange}
-                />
-                <div id="error">{error? error:null}</div>
-                <button disabled={this.state.nickname.length<1} className="btn" type="submit">GO!!</button>
+            <form onSubmit={this.handleVerifySubmit} id="Login-form">
+              <h2>Welcome</h2>
+              <label htmlFor="nickname">
+                <h2>Don't have nickname?</h2>
+              </label>
+              <input
+                id="nickname"
+                name="nickname"
+                type="text"
+                placeholder="Get cool nickname here "
+                autoComplete="off"
+                onChange={this.handlOnchange}
+              />
+              <div id="error">{error ? error : null}</div>
+              <button
+                disabled={this.state.nickname.length < 1}
+                className="btn"
+                type="submit"
+              >
+                GO!!
+              </button>
             </form>
           </div>
         );
